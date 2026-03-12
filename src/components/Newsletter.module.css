@@ -161,3 +161,36 @@
   line-height: 1.8;
   text-align: center;
 }
+
+/* Input error state */
+.inputError { border-color: rgba(224, 112, 112, 0.6); }
+
+/* Promise / fine print */
+.promise {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: rgba(138, 132, 120, 0.4);
+  margin-top: 1.2rem;
+}
+
+/* Success block */
+.successBlock {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(201, 169, 110, 0.06);
+  border: 1px solid var(--border);
+  max-width: 420px;
+  margin: 0 auto 1.5rem;
+}
+.successMark {
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+.successText {
+  font-size: 1rem;
+  color: var(--bone);
+  line-height: 1.6;
+}

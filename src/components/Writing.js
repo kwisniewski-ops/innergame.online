@@ -59,9 +59,7 @@ export default function Writing({ essays }) {
       {/* Footer note */}
       <div className={`${styles.footer} reveal`}>
         <p>
-          These essays are a public archive of thought. Not written for
-          performance. Not AI written. These are my thoughts — inspired by
-          sources, but genuinely my own.
+          These essays are a public archive of thought. Not written for performance metrics. Not AI-generated. These are my attempts to translate what competition teaches — inspired by sources, forged by experience, genuinely my own.
         </p>
         <a href="/writing" className="btn-ghost">Explore the Archive</a>
       </div>

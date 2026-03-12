@@ -9,80 +9,88 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--page-gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: center;
 }
 
-/* Giant background numeral */
-.bgNum {
-  position: absolute;
+/* ── Quote block ── */
+.quoteBlock {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.bigQ {
   font-family: var(--font-serif);
-  font-size: clamp(6rem, 14vw, 14rem);
+  font-size: 5rem;
   font-weight: 300;
-  color: rgba(201,169,110,0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
+  color: var(--gold);
+  opacity: 0.18;
+  line-height: 0.5;
+  margin-bottom: 1rem;
+  display: block;
 }
 
-/* Lead quote — large impactful display */
-.leadQuote {
+.quote {
   font-family: var(--font-fell);
   font-style: italic;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  line-height: 1.55;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.65;
   color: var(--bone);
   margin-bottom: 1.2rem;
 }
 
-/* Quote attribution */
-.attribution {
-  font-size: 0.85rem;
-  letter-spacing: 0.22em;
+.attr {
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
   opacity: 0.7;
 }
 
-/* Pillar grid */
-.pillars {
+/* ── Stats grid ── */
+.statsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  margin-top: 5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
 }
 
-.pillar {
-  padding: 2.5rem;
+.stat {
+  padding: 1.8rem 2rem;
   border: 1px solid var(--border-faint);
   transition: border-color 0.3s;
 }
-.pillar:hover { border-color: var(--border); }
 
-.pillarNum {
+.stat:hover { border-color: var(--border); }
+
+.statNum {
   font-family: var(--font-serif);
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: 300;
   color: var(--gold);
-  opacity: 0.3;
   line-height: 1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.pillarTitle {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: var(--bone);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-/* Pillar body — full readable size */
-.pillarBody {
-  font-size: 1rem;
+.statLabel {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
   color: var(--muted);
-  line-height: 1.85;
+  line-height: 1.6;
+  white-space: pre-line;
 }
+
+/* ── Right column uses global section-label / section-title / section-body ── */
 
 @media (max-width: 960px) {
-  .pillars { grid-template-columns: 1fr; gap: 2px; }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }

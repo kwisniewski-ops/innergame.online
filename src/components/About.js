@@ -75,14 +75,16 @@ export default function About() {
           </p>
 
           <p className="section-body" style={{ marginBottom: '1.5rem' }}>
-            I blend Stoic philosophy with Adlerian psychology not because it sounds
-            sophisticated, but because it works. It produces athletes who win — and more
-            importantly, people who know what they're winning <em>for.</em>
+            Stoic philosophy teaches us to separate what is within our control
+            from what is not. Adlerian psychology reminds us that we are always
+            moving <em>toward</em> something — that behavior is purposive. Together,
+            they produce athletes who perform with clarity and people who know what
+            they're competing <em>for.</em>
           </p>
 
           <p className="section-body" style={{ marginBottom: '3.5rem' }}>
-            What I call the Inner Game isn't a metaphor — it's a map. A map to who
-            you actually are, and who you're choosing to become.
+            The Inner Game isn't a metaphor. It's a map — to who you actually are,
+            and who you are choosing to become.
           </p>
 
           {/* Pull stat */}

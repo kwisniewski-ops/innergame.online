@@ -4,10 +4,10 @@ import { useReveal } from '@/hooks/useReveal'
 import styles from './Philosophy.module.css'
 
 const STATS = [
-  { num: 'T5',  label: 'Timescale\nFramework'      },
-  { num: '∞',   label: 'Essays in\nthe Archive'     },
-  { num: '01',  label: 'Philosophy\nof Excellence'  },
-  { num: '4',   label: 'Atelier Spots\nAvailable'   },
+  { num: 'T5',  label: 'Timescale\nFramework'     },
+  { num: '∞',   label: 'Essays in\nthe Archive'    },
+  { num: '01',  label: 'Philosophy\nof Excellence' },
+  { num: '4',   label: 'Atelier Spots\nAvailable'  },
 ]
 
 export default function PhilosophyClient() {
@@ -52,9 +52,14 @@ export default function PhilosophyClient() {
           you exactly who you are under pressure — what you believe, what you
           fear, and what you're capable of when no one is watching.
         </p>
+        <p className="section-body" style={{ marginBottom: '1.5rem' }}>
+          That is the Inner Game. And it is where every championship,
+          every career, and every worthy life is actually decided.
+        </p>
         <p className="section-body" style={{ marginBottom: '2.5rem' }}>
-          That is the Inner Game. And it is where every championship is
-          actually decided.
+          INNERGAME exists at the intersection of embodied performance and
+          written thought — because the athlete who understands <em>why</em> they
+          compete will always outlast the one who doesn't.
         </p>
         <a href="#method" className="btn-ghost">
           Explore the T5 Method

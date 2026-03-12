@@ -132,9 +132,9 @@ export default function Hero() {
         </h1>
 
         <p className={styles.sub}>
-          Kyle Wisniewski blends Stoic philosophy with Adlerian psychology to
-          develop athletes and high-performers into the fullest version of
-          themselves — guided by athletic excellence.
+          Kyle Wisniewski translates Stoic philosophy and Adlerian psychology
+          into a single, lived framework — for athletes and high-performers
+          who know the outer game is won inside first.
         </p>
 
         <div className={styles.actions}>

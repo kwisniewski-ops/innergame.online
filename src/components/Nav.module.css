@@ -163,3 +163,8 @@
   .links  { display: none; }
   .burger { display: flex; }
 }
+
+/* burgerOpen alias */
+.burgerOpen span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burgerOpen span:nth-child(2) { opacity: 0; }
+.burgerOpen span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }

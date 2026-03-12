@@ -325,3 +325,8 @@
   .panelTier { writing-mode: initial; transform: none; }
   .bgGlyph   { font-size: 40vw; opacity: 0.6; }
 }
+
+/* Layout aliases */
+.headerLeft  {}
+.panelCenter {}
+.panelRight  {}

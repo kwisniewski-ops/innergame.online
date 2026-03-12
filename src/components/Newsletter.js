@@ -5,7 +5,7 @@ import { useReveal } from '@/hooks/useReveal'
 import styles from './Newsletter.module.css'
 
 export default function Newsletter() {
-  const [status,  setStatus]  = useState('idle') // idle | loading | success | error
+  const [status,  setStatus]  = useState('idle')
   const [email,   setEmail]   = useState('')
   const [message, setMessage] = useState('')
   const ref = useReveal()
@@ -48,22 +48,23 @@ export default function Newsletter() {
           The Inner Letter — Free Weekly
         </span>
 
-        <h2 className={styles.title}>
+        <h2 className={styles.headline}>
           Most people consume.<br />
-          <em className="gold">You'll create.</em>
+          <em>You'll create.</em>
         </h2>
 
         <p className={styles.sub}>
-          Every week, one essay. One idea that sharpens how you think,
-          perform, and live. Written by a coach and athlete who believes
-          the pen is as powerful as any training protocol.
+          One essay, every week. Written for athletes and thinkers who
+          understand that the mind is the final frontier of performance —
+          and that the person who authors their inner world wins the outer one.
+          No algorithm. No filler. Just the kind of clarity that compounds.
         </p>
 
         {status === 'success' ? (
           <div className={styles.successBlock}>
             <span className={styles.successMark}>✓</span>
             <p className={styles.successText}>
-              You're in. Check your inbox — the first letter is on its way.
+              You're in. The first letter arrives this week.
             </p>
           </div>
         ) : (
@@ -97,7 +98,7 @@ export default function Newsletter() {
         )}
 
         <p className={styles.promise}>
-          No noise. No sponsors. Unsubscribe anytime.
+          Unsubscribe anytime, easily.
         </p>
       </div>
     </section>

@@ -32,6 +32,7 @@
   position: relative;
   z-index: 2;
   max-width: 860px;
+  padding-bottom: 7rem; /* clear the absolute-positioned scroll indicator */
 }
 
 /* ── Eyebrow — visible, not tiny ── */
@@ -221,3 +222,6 @@
   .credStrip { gap: 0.4rem; }
   .credItem  { letter-spacing: 0.14em; font-size: 0.75rem; }
 }
+
+/* titleAccent alias */
+.titleAccent { display: block; }
