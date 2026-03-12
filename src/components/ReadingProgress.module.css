@@ -1,0 +1,20 @@
+.track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 9999;
+  background: rgba(201, 169, 110, 0.1);
+  pointer-events: none;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform-origin: left center;
+  /* transform: scaleX() set inline — GPU composited, no layout reflow */
+  will-change: transform;
+  transition: transform 0.08s linear;
+}

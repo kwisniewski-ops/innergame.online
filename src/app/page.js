@@ -9,6 +9,7 @@ import Writing from '@/components/Writing'
 import Testimonial from '@/components/Testimonial'
 import Newsletter from '@/components/Newsletter'
 import Footer from '@/components/Footer'
+import SectionProgress from '@/components/SectionProgress'
 import { getFeaturedEssays } from '@/lib/essays'
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
   return (
     <>
       <Nav />
+      <SectionProgress />
       <main>
         <Hero />
         <Marquee />

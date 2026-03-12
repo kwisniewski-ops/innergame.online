@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import EssayClient from '@/components/EssayClient'
 import { getEssayBySlug, getAllSlugs, T5_TIERS } from '@/lib/essays'
 import styles from './essay.module.css'
 
@@ -75,7 +76,7 @@ export default function EssayPage({ params }) {
     <>
       <Nav />
       <main className={styles.main}>
-        {/* Header */}
+        {/* Header — server rendered, outside tracking ref */}
         <header className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroMeta}>
@@ -105,40 +106,43 @@ export default function EssayPage({ params }) {
 
         <hr className="hr-gold" />
 
-        {/* Body */}
-        <article className={styles.article}>
-          <div className={styles.articleInner}>
-            {blocks.map((block, i) => {
-              if (block.type === 'h2') {
-                return <h2 key={i} className={styles.h2}>{block.text}</h2>
-              }
-              return (
-                <p
-                  key={i}
-                  className={i === 0 ? styles.drop : undefined}
-                  dangerouslySetInnerHTML={{ __html: inline(block.text) }}
-                />
-              )
-            })}
-          </div>
-        </article>
-
-        <hr className="hr-gold" />
-
-        {/* CTA */}
-        <section className={styles.cta}>
-          <div className={styles.ctaInner}>
-            <p className={styles.ctaLabel}>Continue the work</p>
-            <h2 className={styles.ctaTitle}>
-              Ready to architect your<br />
-              <em>performance from the inside?</em>
-            </h2>
-            <div className={styles.ctaActions}>
-              <a href="/contact" className="btn-primary">Work With Kyle</a>
-              <Link href="/writing" className="btn-ghost">More Essays →</Link>
+        {/* EssayClient: adds gold progress bar + tracks reading depth */}
+        <EssayClient>
+          {/* Body */}
+          <article className={styles.article}>
+            <div className={styles.articleInner}>
+              {blocks.map((block, i) => {
+                if (block.type === 'h2') {
+                  return <h2 key={i} className={styles.h2}>{block.text}</h2>
+                }
+                return (
+                  <p
+                    key={i}
+                    className={i === 0 ? styles.drop : undefined}
+                    dangerouslySetInnerHTML={{ __html: inline(block.text) }}
+                  />
+                )
+              })}
             </div>
-          </div>
-        </section>
+          </article>
+
+          <hr className="hr-gold" />
+
+          {/* CTA */}
+          <section className={styles.cta}>
+            <div className={styles.ctaInner}>
+              <p className={styles.ctaLabel}>Continue the work</p>
+              <h2 className={styles.ctaTitle}>
+                Ready to architect your<br />
+                <em>performance from the inside?</em>
+              </h2>
+              <div className={styles.ctaActions}>
+                <a href="/contact" className="btn-primary">Work With Kyle</a>
+                <Link href="/writing" className="btn-ghost">More Essays →</Link>
+              </div>
+            </div>
+          </section>
+        </EssayClient>
       </main>
       <Footer />
     </>

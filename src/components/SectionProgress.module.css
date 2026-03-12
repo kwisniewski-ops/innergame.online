@@ -1,0 +1,134 @@
+/* ─── Section Progress — right-edge vertical nav ─────────────── */
+.nav {
+  position: fixed;
+  right: 1.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+
+  /* Fade in after a short delay so it doesn't flash on load */
+  opacity: 0;
+  animation: fadeIn 0.6s 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Vertical track — thin line running behind the dots */
+.track {
+  position: absolute;
+  left: 50%;
+  top: 0.65rem;       /* align with first dot center */
+  bottom: 0.65rem;    /* align with last dot center */
+  width: 1px;
+  background: rgba(201, 169, 110, 0.12);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* Gold fill that grows downward as you scroll */
+.trackFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, var(--gold), rgba(201, 169, 110, 0.4));
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 0;
+}
+
+/* Each dot is a button — accessible, hoverable */
+.dot {
+  position: relative;
+  width: 1.3rem;
+  height: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0.3rem;
+  cursor: none; /* matches site custom cursor */
+  z-index: 1;
+}
+
+/* The visual circle inside the button */
+.dot::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(201, 169, 110, 0.25);
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Past section — subtle gold */
+.dotPast::before {
+  background: rgba(201, 169, 110, 0.5);
+  border-color: rgba(201, 169, 110, 0.6);
+}
+
+/* Active section — full gold, larger */
+.dotActive::before {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(201, 169, 110, 0.4);
+}
+
+/* Hover — slightly enlarge */
+.dot:hover::before {
+  width: 7px;
+  height: 7px;
+  background: rgba(201, 169, 110, 0.8);
+  border-color: var(--gold);
+}
+
+/* Tooltip label — appears to the left on hover */
+.label {
+  position: absolute;
+  right: calc(100% + 0.6rem);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone);
+  white-space: nowrap;
+  background: rgba(10, 10, 8, 0.88);
+  border: 1px solid var(--border-faint);
+  padding: 0.3rem 0.7rem;
+  pointer-events: none;
+
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(-50%) translateX(4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.dot:hover .label,
+.dotActive .label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Active label — gold text */
+.dotActive .label {
+  color: var(--gold);
+  border-color: var(--border);
+}
+
+/* Hide on mobile — not enough space */
+@media (max-width: 960px) {
+  .nav { display: none; }
+}
