@@ -1,3 +1,4 @@
+/* ─── Contact Page ─────────────────────── */
 .page {
   min-height: 100vh;
   padding: 10rem var(--page-gutter) var(--section-pad);
@@ -8,23 +9,19 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 55% 50% at 70% 30%,
-    rgba(201, 169, 110, 0.045) 0%,
-    transparent 65%
-  );
+  background: radial-gradient(ellipse 55% 50% at 70% 30%, rgba(201,169,110,0.045) 0%, transparent 65%);
   pointer-events: none;
 }
 
-/* ── Header ── */
+/* Header */
 .header {
   max-width: var(--max-width);
   margin: 0 auto 5rem;
 }
 
 .eyebrow {
-  font-size: 0.52rem;
-  letter-spacing: 0.38em;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
   display: block;
@@ -39,21 +36,17 @@
   letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
 }
+.title em { font-style: italic; color: var(--gold); }
 
-.title em {
-  font-style: italic;
-  color: var(--gold);
-}
-
+/* Sub — clear and readable */
 .sub {
-  font-size: 0.7rem;
-  letter-spacing: 0.07em;
+  font-size: 1.1rem;
   color: var(--muted);
   line-height: 1.9;
-  max-width: 480px;
+  max-width: 500px;
 }
 
-/* ── Layout ── */
+/* Layout */
 .layout {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -63,31 +56,19 @@
   align-items: start;
 }
 
-/* ── Form ── */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
+/* Form */
+.form { display: flex; flex-direction: column; gap: 2.5rem; }
+.fieldGroup { display: flex; flex-direction: column; gap: 0.8rem; }
 
-.fieldGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
+/* Field labels — clear, accessible */
 .fieldLabel {
-  font-size: 0.55rem;
-  letter-spacing: 0.25em;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-.optional {
-  opacity: 0.5;
-  text-transform: none;
-  letter-spacing: 0.05em;
-}
+.optional { opacity: 0.5; text-transform: none; letter-spacing: 0.05em; }
 
 /* Interest selector */
 .interests {
@@ -100,10 +81,12 @@
   background: rgba(245, 240, 232, 0.02);
   border: 1px solid var(--border-faint);
   padding: 1.2rem 1.5rem;
+  min-height: 76px;
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  justify-content: center;
+  gap: 0.4rem;
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
@@ -120,115 +103,89 @@
   transform-origin: left;
 }
 
-.interestBtn:hover::before,
-.interestActive::before { transform: scaleX(1); }
+.interestBtn:hover::before, .interestActive::before { transform: scaleX(1); }
+.interestBtn:hover, .interestActive { border-color: var(--border); background: rgba(201,169,110,0.04); }
 
-.interestBtn:hover,
-.interestActive {
-  border-color: var(--border);
-  background: rgba(201, 169, 110, 0.04);
-}
-
+/* Interest name — legible */
 .interestName {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 400;
   color: var(--bone);
 }
-
-.interestActive .interestName {
-  color: var(--gold);
-}
+.interestActive .interestName { color: var(--gold); }
 
 .interestSub {
-  font-size: 0.52rem;
-  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
   color: var(--muted);
 }
 
-/* Input */
+/* Inputs */
 .input {
   background: rgba(245, 240, 232, 0.03);
   border: 1px solid var(--border-faint);
   padding: 1rem 1.4rem;
+  min-height: 52px;
   color: var(--bone);
   font-family: var(--font-sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
   outline: none;
   transition: border-color 0.3s;
   width: 100%;
+  line-height: 1.5;
 }
+.input::placeholder { color: rgba(138,132,120,0.4); }
+.input:focus { border-color: var(--border); }
 
-.input::placeholder {
-  color: rgba(138, 132, 120, 0.4);
-}
-
-.input:focus {
-  border-color: var(--border);
-}
-
-.textarea {
-  resize: vertical;
-  min-height: 130px;
-  line-height: 1.75;
-}
+.textarea { resize: vertical; min-height: 140px; padding-top: 1rem; line-height: 1.75; }
 
 /* Submit */
 .submit {
   padding: 1.1rem 3rem;
+  min-height: 54px;
   background: var(--gold);
   border: 1px solid var(--gold);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   transition: all 0.35s;
   align-self: flex-start;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 180px;
-  min-height: 48px;
+  min-width: 200px;
 }
-
-.submit:hover:not(:disabled) {
-  background: transparent;
-  color: var(--gold);
-}
-
-.submit:disabled {
-  opacity: 0.4;
-}
+.submit:hover:not(:disabled) { background: transparent; color: var(--gold); }
+.submit:disabled { opacity: 0.4; }
 
 .spinner {
-  width: 16px;
-  height: 16px;
-  border: 1px solid rgba(10, 10, 8, 0.3);
+  width: 18px; height: 18px;
+  border: 1.5px solid rgba(10,10,8,0.3);
   border-top-color: var(--ink);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   display: inline-block;
 }
-
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* Fine print */
 .note {
-  font-size: 0.54rem;
-  letter-spacing: 0.1em;
-  color: rgba(138, 132, 120, 0.35);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: rgba(138,132,120,0.4);
   margin-top: -1rem;
 }
 
-/* ── Aside ── */
+/* Aside */
 .aside {
   position: sticky;
   top: 8rem;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .asideBlock {
@@ -236,14 +193,11 @@
   background: rgba(245, 240, 232, 0.02);
   border: 1px solid var(--border-faint);
 }
-
-.asideBlock + .asideBlock {
-  border-top: none;
-}
+.asideBlock + .asideBlock { border-top: none; }
 
 .asideLabel {
-  font-size: 0.5rem;
-  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
   display: block;
@@ -252,60 +206,45 @@
 
 .asidePrice {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 300;
   color: var(--bone);
   margin-bottom: 1rem;
 }
 
+/* Aside description — readable */
 .asideDesc {
-  font-size: 0.6rem;
-  letter-spacing: 0.05em;
+  font-size: 0.95rem;
   color: var(--muted);
   line-height: 1.85;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
-.asideList {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
+.asideList { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
 
 .asideList li {
-  font-size: 0.57rem;
-  letter-spacing: 0.06em;
+  font-size: 0.9rem;
   color: var(--muted);
-  padding-left: 1.2rem;
+  padding-left: 1.3rem;
   position: relative;
+  line-height: 1.6;
 }
+.asideList li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.82rem; }
 
-.asideList li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-size: 0.55rem;
-}
-
-.asideDivider {
-  height: 1px;
-  background: var(--border-faint);
-}
+.asideDivider { height: 1px; background: var(--border-faint); }
 
 .asideQuote {
   padding: 2rem 2.5rem;
   font-family: var(--font-fell);
   font-style: italic;
-  font-size: 1rem;
-  color: rgba(245, 240, 232, 0.3);
-  line-height: 1.6;
+  font-size: 1.05rem;
+  color: rgba(245,240,232,0.3);
+  line-height: 1.65;
   border: 1px solid var(--border-faint);
   border-top: none;
 }
 
-/* ── Success state ── */
+/* Success state */
 .success {
   min-height: 80vh;
   display: flex;
@@ -319,14 +258,13 @@
 }
 
 .successGlyph {
-  width: 4rem;
-  height: 4rem;
+  width: 4.5rem; height: 4.5rem;
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--gold);
 }
 
@@ -338,34 +276,28 @@
 }
 
 .successSub {
-  font-size: 0.68rem;
-  letter-spacing: 0.07em;
+  font-size: 1.05rem;
   color: var(--muted);
   line-height: 1.9;
 }
 
 .backLink {
-  font-size: 0.55rem;
+  font-size: 0.82rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
   text-decoration: none;
   transition: opacity 0.3s;
   margin-top: 1rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
-
 .backLink:hover { opacity: 0.7; }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 960px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .aside {
-    position: static;
-  }
-  .interests {
-    grid-template-columns: 1fr;
-  }
+  .layout { grid-template-columns: 1fr; gap: 3rem; }
+  .aside  { position: static; }
+  .interests { grid-template-columns: 1fr; }
 }

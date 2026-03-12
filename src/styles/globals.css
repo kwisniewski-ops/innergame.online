@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════
    INNERGAME — GLOBAL STYLES & DESIGN TOKENS
-   src/styles/globals.css
+   Accessible type scale — min 16px body
 ════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500&family=IM+Fell+English:ital@0;1&display=swap');
@@ -17,25 +17,30 @@
   --gold-dark:     #A07840;
   --gold-pale:     rgba(201, 169, 110, 0.12);
   --warm-gray:     #8A8478;
-  --muted:         rgba(245, 240, 232, 0.45);
+  --muted:         rgba(245, 240, 232, 0.55);
   --border:        rgba(201, 169, 110, 0.22);
-  --border-faint:  rgba(245, 240, 232, 0.07);
+  --border-faint:  rgba(245, 240, 232, 0.09);
 
-  /* Typography */
-  --font-serif:    'Cormorant Garamond', Georgia, serif;
-  --font-sans:     'Montserrat', system-ui, sans-serif;
-  --font-fell:     'IM Fell English', Georgia, serif;
+  /* Typography scale */
+  --text-label:    0.8rem;    /* 12.8px — eyebrows, section labels */
+  --text-sm:       0.9rem;    /* 14.4px — captions, meta, tags */
+  --text-base:     1rem;      /* 16px   — standard body */
+  --text-md:       1.1rem;    /* 17.6px — comfortable reading */
+  --text-lg:       1.2rem;    /* 19.2px — lead paragraphs */
 
   /* Spacing */
   --section-pad:   9rem;
   --page-gutter:   4.5rem;
   --max-width:     1200px;
+
+  /* Type families */
+  --font-serif:    'Cormorant Garamond', Georgia, serif;
+  --font-sans:     'Montserrat', system-ui, sans-serif;
+  --font-fell:     'IM Fell English', Georgia, serif;
 }
 
 /* ── RESET ── */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -51,7 +56,8 @@ body {
   color: var(--bone);
   font-family: var(--font-sans);
   font-weight: 300;
-  line-height: 1.75;
+  font-size: var(--text-base);
+  line-height: 1.8;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -73,28 +79,28 @@ body::after {
 * { cursor: none; }
 
 /* ── TYPOGRAPHY UTILITIES ── */
-.serif       { font-family: var(--font-serif); }
-.fell        { font-family: var(--font-fell); }
-.gold        { color: var(--gold); }
-.italic      { font-style: italic; }
+.serif  { font-family: var(--font-serif); }
+.fell   { font-family: var(--font-fell); }
+.gold   { color: var(--gold); }
+.italic { font-style: italic; }
 
 /* ── SECTION UTILITIES ── */
 .section-label {
-  font-size: 0.52rem;
-  letter-spacing: 0.38em;
+  font-size: var(--text-label);
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
   display: block;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.01em;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
 }
 
 .section-title em {
@@ -103,11 +109,10 @@ body::after {
 }
 
 .section-body {
-  font-size: 0.7rem;
-  letter-spacing: 0.07em;
+  font-size: var(--text-md);
   color: var(--muted);
-  line-height: 1.95;
-  max-width: 580px;
+  line-height: 1.9;
+  max-width: 600px;
 }
 
 .section-inner {
@@ -123,22 +128,26 @@ body::after {
   background: linear-gradient(to right, transparent, var(--border), transparent);
 }
 
-/* ── BUTTONS ── */
+/* ── BUTTONS — accessible touch targets (min 44px) ── */
 .btn-primary {
   display: inline-block;
-  padding: 0.9rem 2.5rem;
+  padding: 1rem 2.8rem;
   background: var(--gold);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: var(--text-sm);
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid var(--gold);
   transition: all 0.35s;
   position: relative;
   overflow: hidden;
+  min-height: 48px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-primary::after {
@@ -155,18 +164,21 @@ body::after {
 }
 
 .btn-ghost {
-  display: inline-block;
-  padding: 0.9rem 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.8rem;
   background: transparent;
   color: var(--bone);
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: var(--text-sm);
   font-weight: 400;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid var(--border-faint);
   transition: all 0.35s;
+  min-height: 48px;
+  line-height: 1;
 }
 
 .btn-ghost:hover {
@@ -176,14 +188,8 @@ body::after {
 
 /* ── REVEAL ANIMATION ── */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .reveal {
@@ -202,23 +208,14 @@ body::after {
 .reveal-delay-3 { transition-delay: 0.3s; }
 
 /* ── SCROLLBAR ── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--near-black);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(201, 169, 110, 0.3);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
-}
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--near-black); }
+::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-/* ── FOCUS VISIBLE ── */
+/* ── FOCUS VISIBLE — accessibility ── */
 :focus-visible {
-  outline: 1px solid var(--gold);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 
@@ -228,7 +225,7 @@ body::after {
   color: var(--bone);
 }
 
-/* ── RESPONSIVE BREAKPOINTS ── */
+/* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   :root {
     --section-pad: 6rem;
@@ -240,5 +237,7 @@ body::after {
   :root {
     --section-pad: 4rem;
     --page-gutter: 1.5rem;
+    --text-md: 1rem;
   }
+  body { font-size: 1rem; }
 }

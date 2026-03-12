@@ -2,7 +2,7 @@
   padding-top: 6rem;
 }
 
-/* Hero */
+/* ── Hero ── */
 .hero {
   padding: 5rem 0 0;
 }
@@ -18,42 +18,41 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .back {
-  font-size: 0.56rem;
-  letter-spacing: 0.22em;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
   text-decoration: none;
   transition: color 0.3s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
-
-.back:hover {
-  color: var(--gold);
-}
+.back:hover { color: var(--gold); }
 
 .tier {
-  font-size: 0.52rem;
-  letter-spacing: 0.28em;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
   font-weight: 300;
-  line-height: 1.08;
+  line-height: 1.06;
   letter-spacing: -0.02em;
   color: var(--bone);
   margin-bottom: 2rem;
 }
 
 .excerpt {
-  font-size: 0.75rem;
-  letter-spacing: 0.07em;
+  font-size: 1.15rem;
   color: var(--muted);
   line-height: 1.85;
   margin-bottom: 2.5rem;
@@ -63,16 +62,15 @@
 .byline {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.8rem;
-  font-size: 0.56rem;
-  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(138, 132, 120, 0.5);
+  color: rgba(138, 132, 120, 0.55);
 }
 
-.dot {
-  color: var(--border);
-}
+.dot { color: var(--border); }
 
 /* Banner */
 .banner {
@@ -95,7 +93,7 @@
   user-select: none;
 }
 
-/* Article */
+/* ── Article body — optimised for reading ── */
 .article {
   padding: 5rem 0;
 }
@@ -104,54 +102,61 @@
   max-width: 680px;
   margin: 0 auto;
   padding: 0 var(--page-gutter);
-  font-size: 1.08rem;
+
+  /* WCAG AA readable body: 18px minimum for long-form */
+  font-size: 1.125rem;
   line-height: 1.85;
-  color: rgba(245, 240, 232, 0.82);
-  letter-spacing: 0.015em;
+  color: rgba(245, 240, 232, 0.85);
+  letter-spacing: 0.01em;
 }
 
 .articleInner p {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.75rem;
 }
 
 .articleInner em {
   font-style: italic;
-  color: rgba(245, 240, 232, 0.9);
+  color: rgba(245, 240, 232, 0.95);
 }
 
+/* Drop cap on opening paragraph */
 .drop::first-letter {
   font-family: var(--font-serif);
-  font-size: 4.5rem;
+  font-size: 5.5rem;
   font-weight: 300;
   color: var(--gold);
   float: left;
   line-height: 0.78;
-  margin: 0.12em 0.1em 0 0;
+  margin: 0.1em 0.12em 0 0;
 }
 
+/* Pull quote */
 .pullQuote {
   font-family: var(--font-fell);
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--bone);
   border-left: 2px solid var(--gold);
-  padding: 1rem 0 1rem 2rem;
+  padding: 1.2rem 0 1.2rem 2rem;
   margin: 3rem 0;
 }
 
+/* In-article headings */
 .h2 {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 400;
   color: var(--bone);
-  margin: 3rem 0 1.5rem;
+  margin: 3.5rem 0 1.5rem;
   letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
+/* Closing note */
 .closing {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--muted);
   border-top: 1px solid var(--border-faint);
@@ -159,7 +164,7 @@
   margin-top: 3rem !important;
 }
 
-/* CTA strip */
+/* ── CTA strip ── */
 .cta {
   padding: 6rem 0 var(--section-pad);
   text-align: center;
@@ -186,16 +191,17 @@
 }
 
 .ctaLabel {
-  font-size: 0.52rem;
-  letter-spacing: 0.38em;
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1.5rem;
+  display: block;
 }
 
 .ctaTitle {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 300;
   line-height: 1.15;
   margin-bottom: 3rem;

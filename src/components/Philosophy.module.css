@@ -1,111 +1,88 @@
+/* ─── Philosophy ─────────────────────────── */
 .section {
   padding: var(--section-pad) 0;
-  position: relative;
-}
-
-.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 70% 60% at 80% 50%,
-    rgba(201, 169, 110, 0.045) 0%,
-    transparent 65%
-  );
-  pointer-events: none;
+  border-bottom: 1px solid var(--border-faint);
+  overflow: hidden;
 }
 
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--page-gutter);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
 }
 
-/* Quote block */
-.quoteBlock {
-  position: relative;
-  margin-bottom: 3rem;
-}
-
-.bigQ {
+/* Giant background numeral */
+.bgNum {
+  position: absolute;
   font-family: var(--font-serif);
   font-size: clamp(6rem, 14vw, 14rem);
   font-weight: 300;
-  color: var(--gold-pale);
-  line-height: 0.85;
-  position: absolute;
-  top: -1.5rem;
-  left: -0.5rem;
+  color: rgba(201,169,110,0.04);
+  line-height: 1;
   pointer-events: none;
   user-select: none;
 }
 
-.quote {
+/* Lead quote — large impactful display */
+.leadQuote {
   font-family: var(--font-fell);
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
   font-style: italic;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   line-height: 1.55;
   color: var(--bone);
-  padding-left: 2.5rem;
-  border-left: 2px solid var(--gold);
-  position: relative;
-  z-index: 1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
-.attr {
-  font-size: 0.56rem;
-  letter-spacing: 0.25em;
+/* Quote attribution */
+.attribution {
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--muted);
-  padding-left: 2.5rem;
+  color: var(--gold);
+  opacity: 0.7;
 }
 
-/* Stats */
-.statsGrid {
+/* Pillar grid */
+.pillars {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 5rem;
 }
 
-.stat {
-  background: rgba(245, 240, 232, 0.025);
+.pillar {
+  padding: 2.5rem;
   border: 1px solid var(--border-faint);
-  padding: 1.8rem 1.5rem;
-  transition: all 0.3s;
+  transition: border-color 0.3s;
 }
+.pillar:hover { border-color: var(--border); }
 
-.stat:hover {
-  background: rgba(201, 169, 110, 0.04);
-  border-color: var(--border);
-}
-
-.statNum {
+.pillarNum {
   font-family: var(--font-serif);
   font-size: 2.8rem;
   font-weight: 300;
   color: var(--gold);
+  opacity: 0.3;
   line-height: 1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.statLabel {
-  font-size: 0.56rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.pillarTitle {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--bone);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Pillar body — full readable size */
+.pillarBody {
+  font-size: 1rem;
   color: var(--muted);
-  line-height: 1.7;
-  white-space: pre-line;
+  line-height: 1.85;
 }
 
-/* Responsive */
 @media (max-width: 960px) {
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
+  .pillars { grid-template-columns: 1fr; gap: 2px; }
 }

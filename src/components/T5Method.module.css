@@ -1,3 +1,4 @@
+/* ─── T5 Method ─────────────────────────── */
 .section {
   padding-top: var(--section-pad);
   background: rgba(245, 240, 232, 0.012);
@@ -5,7 +6,7 @@
   border-bottom: 1px solid var(--border-faint);
 }
 
-/* ── Header ── */
+/* Header */
 .header {
   max-width: var(--max-width);
   margin: 0 auto 3rem;
@@ -16,31 +17,25 @@
   align-items: start;
 }
 
-.headerLeft {}
-
 .heading {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.01em;
   margin-bottom: 1.2rem;
 }
+.heading em { font-style: italic; color: var(--gold); }
 
-.heading em {
-  font-style: italic;
-  color: var(--gold);
-}
-
+/* Intro paragraph — main readable body */
 .intro {
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  font-size: 1.1rem;
   color: var(--muted);
-  line-height: 1.95;
+  line-height: 1.9;
   max-width: 420px;
 }
 
-/* ── Pip navigation ── */
+/* Pip navigation */
 .pips {
   display: flex;
   flex-direction: column;
@@ -53,7 +48,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.7rem 0;
+  padding: 0.85rem 0;
   background: none;
   border: none;
   border-bottom: 1px solid var(--border-faint);
@@ -62,14 +57,13 @@
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
+  min-height: 52px;
 }
 
 .pip::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  left: 0; top: 0; bottom: 0;
   width: 2px;
   background: var(--gold);
   transform: scaleY(0);
@@ -78,29 +72,28 @@
 }
 
 .pipActive::before { transform: scaleY(1); }
-
-.pip:hover { color: var(--bone); }
-.pipActive { color: var(--bone); }
+.pip:hover  { color: var(--bone); }
+.pipActive  { color: var(--bone); }
 
 .pipNum {
   font-family: var(--font-serif);
-  font-size: 0.75rem;
+  font-size: 1.15rem;
   font-weight: 300;
   color: var(--gold);
   opacity: 0.5;
   min-width: 2rem;
   transition: opacity 0.3s;
 }
-
 .pipActive .pipNum { opacity: 1; }
 
+/* Pip label — readable */
 .pipLabel {
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-/* ── Full-bleed stage ── */
+/* Full-bleed stage */
 .stage {
   width: 100%;
   min-height: 70vh;
@@ -114,7 +107,6 @@
   user-select: none;
 }
 
-/* Giant background glyph */
 .bgGlyph {
   position: absolute;
   right: -2rem;
@@ -130,7 +122,6 @@
   transition: opacity 0.5s;
 }
 
-/* Panel content grid */
 .panelInner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -143,7 +134,7 @@
   z-index: 2;
 }
 
-/* Left column — Roman numeral + label */
+/* Left column */
 .panelLeft {
   display: flex;
   flex-direction: column;
@@ -165,9 +156,10 @@
   background: linear-gradient(to bottom, var(--gold), transparent);
 }
 
+/* Tier label — vertical text, decorative, fine being small */
 .panelTier {
-  font-size: 0.48rem;
-  letter-spacing: 0.3em;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--muted);
   writing-mode: vertical-rl;
@@ -175,14 +167,12 @@
   white-space: nowrap;
 }
 
-/* Center column — title */
-.panelCenter {}
-
+/* Center column */
 .panelName {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-size: clamp(2.4rem, 4vw, 4rem);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--bone);
   display: flex;
@@ -196,14 +186,11 @@
   animation: lineIn 0.55s forwards;
 }
 
-/* Right column — body + quote */
-.panelRight {}
-
+/* Right column */
 .panelBody {
-  font-size: 0.68rem;
-  letter-spacing: 0.07em;
+  font-size: 1.1rem;
   color: var(--muted);
-  line-height: 1.95;
+  line-height: 1.9;
   margin-bottom: 2rem;
   opacity: 0;
   animation: fadeIn 0.6s 0.2s forwards;
@@ -222,20 +209,21 @@
 .panelQuoteText {
   font-family: var(--font-fell);
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   color: rgba(245, 240, 232, 0.55);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
+/* Attribution — intentionally small/quiet */
 .panelQuoteSource {
-  font-size: 0.5rem;
-  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
   opacity: 0.7;
 }
 
-/* ── Bottom nav ── */
+/* Bottom nav */
 .bottomNav {
   display: flex;
   align-items: center;
@@ -246,16 +234,17 @@
   z-index: 2;
 }
 
+/* Arrow buttons — larger touch target */
 .arrowBtn {
   background: none;
   border: 1px solid var(--border-faint);
   color: var(--muted);
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: all 0.3s;
   flex-shrink: 0;
 }
@@ -264,7 +253,6 @@
   border-color: var(--gold);
   color: var(--gold);
 }
-
 .arrowBtn:disabled { opacity: 0.25; }
 
 .progressBar {
@@ -277,8 +265,7 @@
 
 .progressFill {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0; top: 0;
   height: 100%;
   background: var(--gold);
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -286,7 +273,7 @@
 
 .progressCount {
   font-family: var(--font-serif);
-  font-size: 0.7rem;
+  font-size: 1.1rem;
   font-weight: 300;
   color: var(--muted);
   letter-spacing: 0.1em;
@@ -295,21 +282,13 @@
   text-align: right;
 }
 
-/* ── Animations ── */
-@keyframes lineIn {
-  to { opacity: 1; transform: translateY(0); }
-}
+/* Animations */
+@keyframes lineIn { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 960px) {
-  .header {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+  .header { grid-template-columns: 1fr; gap: 2rem; }
 
   .pips {
     flex-direction: row;
@@ -319,14 +298,12 @@
 
   .pip {
     border: 1px solid var(--border-faint);
-    padding: 0.4rem 0.8rem;
-    border-bottom: 1px solid var(--border-faint);
+    padding: 0.5rem 0.9rem;
+    min-height: 48px;
     flex-direction: row;
   }
-
   .pip::before { display: none; }
-
-  .pipLabel { display: none; }
+  .pipLabel    { display: none; }
 
   .panelInner {
     grid-template-columns: 1fr;
@@ -345,10 +322,6 @@
     background: linear-gradient(to right, var(--gold), transparent);
   }
 
-  .panelTier {
-    writing-mode: initial;
-    transform: none;
-  }
-
-  .bgGlyph { font-size: 40vw; opacity: 0.6; }
+  .panelTier { writing-mode: initial; transform: none; }
+  .bgGlyph   { font-size: 40vw; opacity: 0.6; }
 }

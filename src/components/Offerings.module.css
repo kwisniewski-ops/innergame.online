@@ -1,29 +1,18 @@
+/* ─── Offerings ─────────────────────────── */
 .section {
   padding: var(--section-pad) 0;
-  position: relative;
-}
-
-.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 60% 70% at 20% 60%,
-    rgba(201, 169, 110, 0.032) 0%,
-    transparent 65%
-  );
-  pointer-events: none;
+  border-top: 1px solid var(--border-faint);
 }
 
 .headerWrap {
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 0 auto 4rem;
   padding: 0 var(--page-gutter);
 }
 
 .grid {
   max-width: var(--max-width);
-  margin: 3.5rem auto 0;
+  margin: 0 auto;
   padding: 0 var(--page-gutter);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -34,153 +23,143 @@
 .card {
   background: rgba(245, 240, 232, 0.02);
   border: 1px solid var(--border-faint);
-  padding: 3.5rem 2.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s;
+  padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
+  gap: 0;
+  position: relative;
+  transition: border-color 0.4s, background 0.4s;
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(201, 169, 110, 0.025);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-
-.card:hover::after {
-  opacity: 1;
+.card:hover {
+  border-color: var(--border);
+  background: rgba(245, 240, 232, 0.03);
 }
 
 .featured {
   border-color: var(--border);
-  background: rgba(201, 169, 110, 0.04);
+  background: rgba(201, 169, 110, 0.03);
 }
 
+/* Featured badge — decorative pill */
 .featuredBadge {
   position: absolute;
   top: 1.4rem;
   right: 1.4rem;
-  font-size: 0.42rem;
-  letter-spacing: 0.3em;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
   border: 1px solid var(--border);
-  padding: 0.25rem 0.65rem;
+  padding: 0.3rem 0.8rem;
 }
 
+/* Roman numeral marker */
 .roman {
   font-family: var(--font-serif);
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   font-weight: 300;
   letter-spacing: 0.28em;
   color: var(--gold);
+  opacity: 0.45;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
   margin-bottom: 2rem;
   position: relative;
-  z-index: 1;
 }
 
+/* Offering name — bold serif display */
 .name {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
-  font-weight: 400;
-  line-height: 1.15;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   color: var(--bone);
-  margin-bottom: 0.8rem;
   white-space: pre-line;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 0.75rem;
 }
 
+/* Price — clear and prominent */
 .price {
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
+  font-size: 1rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 1.5rem;
 }
 
+/* Description — full readable body size */
 .desc {
-  font-size: 0.63rem;
-  letter-spacing: 0.05em;
+  font-size: 1rem;
   color: var(--muted);
-  line-height: 1.9;
-  flex: 1;
+  line-height: 1.85;
   margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
+  flex-grow: 1;
 }
 
+/* Feature list */
 .features {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
   margin-bottom: 2.5rem;
-  position: relative;
-  z-index: 1;
 }
 
 .features li {
-  font-size: 0.6rem;
-  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
   color: var(--muted);
-  padding: 0.45rem 0;
-  border-bottom: 1px solid var(--border-faint);
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  padding-left: 1.4rem;
+  position: relative;
+  line-height: 1.6;
 }
 
 .features li::before {
   content: '→';
+  position: absolute;
+  left: 0;
   color: var(--gold);
-  font-size: 0.58rem;
-  flex-shrink: 0;
-  margin-top: 0.05em;
+  font-size: 0.85rem;
 }
 
+/* CTA buttons — 48px minimum height */
 .cta {
-  display: inline-block;
-  padding: 0.85rem 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  min-height: 52px;
   font-family: var(--font-sans);
-  font-size: 0.55rem;
-  letter-spacing: 0.22em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.35s;
-  position: relative;
-  z-index: 1;
-  align-self: flex-start;
-}
-
-.ctaGhost {
-  color: var(--bone);
-  border: 1px solid var(--border-faint);
-}
-
-.ctaGhost:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  margin-top: auto;
 }
 
 .ctaGold {
   background: var(--gold);
   color: var(--ink);
   border: 1px solid var(--gold);
-  font-weight: 500;
 }
+.ctaGold:hover { background: transparent; color: var(--gold); }
 
-.ctaGold:hover {
+.ctaGhost {
   background: transparent;
-  color: var(--gold);
+  color: var(--bone);
+  border: 1px solid var(--border-faint);
 }
+.ctaGhost:hover { border-color: var(--gold); color: var(--gold); }
 
 @media (max-width: 960px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  .grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .card { padding: 2rem 1.5rem; }
 }
