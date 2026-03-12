@@ -118,6 +118,64 @@
   color: rgba(138, 132, 120, 0.4);
 }
 
+/* Error */
+.inputError {
+  border-color: rgba(200, 80, 80, 0.5) !important;
+}
+
+.errorMsg {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: rgba(220, 100, 100, 0.8);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Success */
+.successBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.successMark {
+  font-size: 1.5rem;
+  color: var(--gold);
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.successText {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(10, 10, 8, 0.3);
+  border-top-color: var(--ink);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 @media (max-width: 600px) {
   .form {
     flex-direction: column;

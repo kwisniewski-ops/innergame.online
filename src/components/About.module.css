@@ -3,93 +3,139 @@
   border-top: 1px solid var(--border-faint);
   border-bottom: 1px solid var(--border-faint);
   background: rgba(245, 240, 232, 0.012);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Subtle ambient glow behind photo side */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse 80% 70% at 20% 50%,
+    rgba(201, 169, 110, 0.04) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* ── Two-column grid ── */
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--page-gutter);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  gap: 7rem;
   align-items: center;
 }
 
-/* Visual */
+/* ── Visual column ── */
 .visual {
   position: relative;
 }
 
-.corner {
+/* Gold corner marks — editorial luxury detail */
+.cornerTL,
+.cornerBR {
   position: absolute;
-  top: -1.2rem;
-  right: -1.2rem;
-  width: 3rem;
-  height: 3rem;
-  border-top: 2px solid var(--gold);
-  border-right: 2px solid var(--gold);
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cornerTL {
+  top: -0.8rem;
+  left: -0.8rem;
+  border-top: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
+}
+
+.cornerBR {
+  bottom: 3.8rem; /* above caption */
+  right: -0.8rem;
+  border-bottom: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+}
+
+/* Photo wrapper — 4:5 portrait ratio */
+.imgWrapper {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+/* Next.js Image component sits inside this */
+.img {
+  transition: transform 8s ease;
+}
+
+.imgWrapper:hover .img {
+  transform: scale(1.025);
+}
+
+/* Gradient overlay — darkens bottom for caption legibility */
+.imgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 8, 0) 50%,
+    rgba(10, 10, 8, 0.72) 100%
+  );
   z-index: 1;
 }
 
-.img {
-  aspect-ratio: 4 / 5;
-  background: linear-gradient(145deg, var(--charcoal) 0%, #1a1a10 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Placeholder monogram until real photo is added */
-.img::before {
-  content: 'K';
-  position: absolute;
-  inset: 0;
+/* Caption bar */
+.caption {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 14rem;
-  font-weight: 300;
-  color: rgba(201, 169, 110, 0.04);
-  text-align: center;
-  line-height: 1;
-  padding-top: 3rem;
+  gap: 1.5rem;
+  padding: 1.2rem 0 1.2rem;
+  border-bottom: 1px solid var(--border-faint);
+  margin-bottom: 1.2rem;
 }
 
-.imgCaption {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
-}
-
-.imgCaption h4 {
+.captionName {
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.25rem;
 }
 
-.imgCaption p {
+.captionRole {
   font-size: 0.56rem;
-  color: rgba(245, 240, 232, 0.32);
   letter-spacing: 0.1em;
+  color: rgba(245, 240, 232, 0.32);
 }
 
-.credentials {
+.captionRule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border-faint), transparent);
+}
+
+/* Credential tags */
+.tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1.5rem;
 }
 
 .tag {
-  font-size: 0.52rem;
+  font-size: 0.5rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
   border: 1px solid var(--border-faint);
-  padding: 0.35rem 0.85rem;
+  padding: 0.32rem 0.8rem;
   transition: all 0.3s;
 }
 
@@ -98,9 +144,47 @@
   color: var(--gold);
 }
 
+/* ── Inline stat ── */
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-faint);
+  border-bottom: 1px solid var(--border-faint);
+}
+
+.statNum {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.statDivide {
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, var(--border), transparent);
+  flex-shrink: 0;
+}
+
+.statText {
+  font-size: 0.62rem;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ── Responsive ── */
 @media (max-width: 960px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
+  }
+
+  .cornerBR {
+    bottom: 5rem; /* recalibrate for mobile caption height */
   }
 }
