@@ -123,7 +123,7 @@ export default function T5Method() {
               aria-selected={i === active}
               aria-label={t.tier}
               className={`${styles.pip} ${i === active ? styles.pipActive : ''}`}
-              onClick={() => setActive(i)}
+              onClick={() => { setActive(i) }}
             >
               <span className={styles.pipNum}>{String(i + 1).padStart(2,'0')}</span>
               <span className={styles.pipLabel}>{t.tier}</span>
@@ -178,7 +178,7 @@ export default function T5Method() {
         <div className={styles.bottomNav}>
           <button
             className={styles.arrowBtn}
-            onClick={() => setActive((p) => Math.max(p - 1, 0))}
+            onClick={(e) => { e.stopPropagation(); setActive((p) => Math.max(p - 1, 0)) }}
             disabled={active === 0}
             aria-label="Previous tier"
           >
@@ -198,7 +198,7 @@ export default function T5Method() {
 
           <button
             className={styles.arrowBtn}
-            onClick={() => setActive((p) => Math.min(p + 1, TIERS.length - 1))}
+            onClick={(e) => { e.stopPropagation(); setActive((p) => Math.min(p + 1, TIERS.length - 1)) }}
             disabled={active === TIERS.length - 1}
             aria-label="Next tier"
           >

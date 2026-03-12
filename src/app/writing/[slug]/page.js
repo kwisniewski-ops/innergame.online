@@ -5,16 +5,13 @@ import Footer from '@/components/Footer'
 import { getEssayBySlug, getAllSlugs, T5_TIERS } from '@/lib/essays'
 import styles from './essay.module.css'
 
-// Static params for build-time generation
 export function generateStaticParams() {
   return getAllSlugs()
 }
 
-// Per-essay metadata — this is the key SEO win vs. a single HTML file
 export function generateMetadata({ params }) {
   const essay = getEssayBySlug(params.slug)
   if (!essay) return {}
-
   return {
     title: essay.title,
     description: essay.excerpt,
@@ -24,14 +21,44 @@ export function generateMetadata({ params }) {
       type: 'article',
       publishedTime: essay.publishedAt,
       authors: ['Kyle Wisniewski'],
-      tags: [T5_TIERS[essay.tier]?.label ?? essay.tier],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: essay.title,
-      description: essay.excerpt,
-    },
+    twitter: { card: 'summary_large_image', title: essay.title, description: essay.excerpt },
   }
+}
+
+// Minimal markdown-to-HTML: handles ## headings, **bold**, *italic*, and paragraphs
+function renderBody(raw) {
+  if (!raw) return []
+  const blocks = []
+  const lines = raw.trim().split('\n')
+  let current = []
+
+  const flush = () => {
+    if (current.length) {
+      blocks.push({ type: 'p', text: current.join(' ').trim() })
+      current = []
+    }
+  }
+
+  lines.forEach((line) => {
+    const trimmed = line.trim()
+    if (!trimmed) { flush(); return }
+    if (trimmed.startsWith('## ')) {
+      flush()
+      blocks.push({ type: 'h2', text: trimmed.slice(3) })
+    } else {
+      current.push(trimmed)
+    }
+  })
+  flush()
+  return blocks
+}
+
+function inline(text) {
+  // Replace **bold** and *italic* with spans
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
 }
 
 export default function EssayPage({ params }) {
@@ -42,12 +69,13 @@ export default function EssayPage({ params }) {
   const date = new Date(essay.publishedAt).toLocaleDateString('en-US', {
     year: 'numeric', month: 'long', day: 'numeric',
   })
+  const blocks = renderBody(essay.body)
 
   return (
     <>
       <Nav />
       <main className={styles.main}>
-        {/* Hero */}
+        {/* Header */}
         <header className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroMeta}>
@@ -65,88 +93,39 @@ export default function EssayPage({ params }) {
             </div>
           </div>
 
-          {/* Banner image placeholder */}
           <div
             className={styles.banner}
             style={{ background: essay.glyphBg }}
             role="img"
             aria-label={`Banner for "${essay.title}"`}
           >
-            <span className={styles.bannerGlyph} aria-hidden="true">
-              {essay.glyph}
-            </span>
+            <span className={styles.bannerGlyph} aria-hidden="true">{essay.glyph}</span>
           </div>
         </header>
 
         <hr className="hr-gold" />
 
-        {/* Article body */}
+        {/* Body */}
         <article className={styles.article}>
           <div className={styles.articleInner}>
-            {/* 
-              When Sanity CMS is connected, replace this placeholder with:
-              <PortableText value={essay.body} />
-              
-              For now we render a structured placeholder that shows the
-              full essay layout with real typography.
-            */}
-            <p className={styles.drop}>
-              The question beneath every performance is not <em>what</em> you
-              do — it is <em>who</em> you are when you do it. This is the
-              Inner Game. And it begins not in the weight room, not on the
-              field, but in the quiet moments before you ever lace up.
-            </p>
-
-            <p>
-              Stoic philosophy has a word for the discipline of perception:
-              <em> phantasia</em>. Every impression — every moment of
-              pressure, every setback, every unexpected outcome — arrives
-              first as a raw perception. What you do with that perception
-              in the next half-second determines everything. Not talent.
-              Not preparation. Perception.
-            </p>
-
-            <blockquote className={styles.pullQuote}>
-              "Between stimulus and response there is a space. In that
-              space is our power to choose our response. In our response
-              lies our growth and our freedom."
-            </blockquote>
-
-            <p>
-              Adlerian psychology adds a complementary lens: the belief
-              that behavior is always purposive. You are not driven by
-              your past — you are pulled by your future. By the vision of
-              who you are choosing to become. The Inner Game is the
-              practice of making that vision coherent, vivid, and demanding.
-            </p>
-
-            <h2 className={styles.h2}>The T5 Connection</h2>
-
-            <p>
-              The T5 Timescale Framework maps this work across five distinct
-              layers of human experience — from the breath in the present
-              second, to the values that define a lifetime. The Inner Game
-              is not one layer. It is the thread that runs through all five.
-            </p>
-
-            <p>
-              Every T5 tier asks the same question in a different register:
-              <em> who are you choosing to be right now?</em> At T1, it is
-              the choice to breathe before reacting. At T5, it is the choice
-              to live in alignment with what you actually value, regardless
-              of what it costs.
-            </p>
-
-            <p className={styles.closing}>
-              This is what I mean when I say the game is won inside first.
-              Not as a metaphor. As a map. — KW
-            </p>
+            {blocks.map((block, i) => {
+              if (block.type === 'h2') {
+                return <h2 key={i} className={styles.h2}>{block.text}</h2>
+              }
+              return (
+                <p
+                  key={i}
+                  className={i === 0 ? styles.drop : undefined}
+                  dangerouslySetInnerHTML={{ __html: inline(block.text) }}
+                />
+              )
+            })}
           </div>
         </article>
 
         <hr className="hr-gold" />
 
-        {/* CTA strip */}
+        {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.ctaInner}>
             <p className={styles.ctaLabel}>Continue the work</p>
@@ -155,7 +134,7 @@ export default function EssayPage({ params }) {
               <em>performance from the inside?</em>
             </h2>
             <div className={styles.ctaActions}>
-              <a href="/#work" className="btn-primary">Work With Kyle</a>
+              <a href="/contact" className="btn-primary">Work With Kyle</a>
               <Link href="/writing" className="btn-ghost">More Essays →</Link>
             </div>
           </div>

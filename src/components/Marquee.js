@@ -6,7 +6,7 @@ const PHRASES = [
   'The T5 Method',
   'Adlerian Psychology',
   'Author Your Excellence',
-  'The Sovereign Letter',
+  'The Inner Letter',
 ]
 
 export default function Marquee() {

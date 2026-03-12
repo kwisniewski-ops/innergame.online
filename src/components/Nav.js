@@ -6,10 +6,10 @@ import { useScrolled } from '@/hooks/useScrolled'
 import styles from './Nav.module.css'
 
 const NAV_LINKS = [
-  { href: '#philosophy', label: 'Philosophy' },
-  { href: '#method',     label: 'T5 Method'  },
-  { href: '#writing',    label: 'Writing'     },
+  { href: '#philosophy', label: 'Philosophy'  },
+  { href: '#method',     label: 'T5 Method'   },
   { href: '#work',       label: 'Work With Me'},
+  { href: '#writing',    label: 'Writing'      },
 ]
 
 export default function Nav() {
@@ -60,7 +60,7 @@ export default function Nav() {
         ))}
         <li>
           <a href="#newsletter" className={`${styles.link} ${styles.cta}`}>
-            The Sovereign Letter
+            The Inner Letter
           </a>
         </li>
       </ul>
@@ -94,7 +94,7 @@ export default function Nav() {
               className={`${styles.drawerLink} ${styles.drawerCta}`}
               onClick={() => setOpen(false)}
             >
-              The Sovereign Letter
+              The Inner Letter
             </a>
           </li>
         </ul>

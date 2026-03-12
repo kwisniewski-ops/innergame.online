@@ -45,7 +45,7 @@ export default function Newsletter() {
     <section className={styles.section} id="newsletter" ref={ref}>
       <div className={`${styles.inner} reveal`}>
         <span className={styles.eyebrow}>
-          The Sovereign Letter — Free Weekly
+          The Inner Letter — Free Weekly
         </span>
 
         <h2 className={styles.title}>

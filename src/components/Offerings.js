@@ -1,12 +1,13 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useReveal } from '@/hooks/useReveal'
 import styles from './Offerings.module.css'
 
 const OFFERS = [
   {
     roman:    'I',
-    name:     'The Sovereign\nLetter',
+    name:     'The Inner\nLetter',
     price:    'Free — Weekly',
     desc:     'Every week, Kyle translates embodied sports performance into philosophical insight — clarifying how you think, how you act, and how to play the game that actually matters.',
     features: [
@@ -19,23 +20,25 @@ const OFFERS = [
     ctaHref:  '#newsletter',
     variant:  'ghost',
     featured: false,
+    external: false,
   },
   {
     roman:    'II',
-    name:     'The\nArchitecture',
-    price:    '$147 / month',
-    desc:     'A structured 12-week deep-dive into your performance psychology. Written curriculum + recorded coaching sessions, built around your T5 profile and athletic goals.',
+    name:     'The\nArchive',
+    price:    '$29 / month',
+    desc:     'Full access to the INNERGAME essay library. Every piece of writing, organized by T5 timescale, with a reading tracker and monthly deep-dive essays exclusive to members.',
     features: [
-      '12-week self-paced curriculum',
-      'Monthly group coaching call with Kyle',
-      'Private community of serious performers',
-      'Full library of T5 assessments & tools',
+      'Complete T5 essay archive — all tiers',
+      'Monthly members-only deep-dive essay',
+      'Reading progress tracker',
+      'Searchable by topic, timescale, and theme',
       'Cancel anytime',
     ],
-    cta:      'Enroll Now',
-    ctaHref:  '#',
+    cta:      'Join the Archive',
+    ctaHref:  '/contact',
     variant:  'gold',
     featured: true,
+    external: false,
   },
   {
     roman:    'III',
@@ -50,9 +53,10 @@ const OFFERS = [
       '3-month minimum commitment',
     ],
     cta:      'Apply for a Spot',
-    ctaHref:  '#',
+    ctaHref:  '/contact',
     variant:  'ghost',
     featured: false,
+    external: false,
   },
 ]
 
@@ -78,7 +82,7 @@ export default function Offerings() {
             className={`${styles.card} ${offer.featured ? styles.featured : ''} reveal reveal-delay-${i}`}
           >
             {offer.featured && (
-              <span className={styles.featuredBadge}>Featured</span>
+              <span className={styles.featuredBadge}>Most Popular</span>
             )}
             <div className={styles.roman}>{offer.roman}</div>
             <h3 className={styles.name}>{offer.name}</h3>
