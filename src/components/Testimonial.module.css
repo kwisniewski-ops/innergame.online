@@ -1,0 +1,37 @@
+.section {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border-faint);
+  border-bottom: 1px solid var(--border-faint);
+  background: rgba(245, 240, 232, 0.012);
+  text-align: center;
+}
+
+.inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+.ornament {
+  font-family: var(--font-fell);
+  font-size: 1.8rem;
+  color: var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--bone);
+  margin-bottom: 2.5rem;
+}
+
+.attr {
+  font-size: 0.55rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}

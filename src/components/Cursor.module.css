@@ -1,0 +1,37 @@
+.ring {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s, border-color 0.25s;
+  will-change: left, top;
+}
+
+.dot {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+
+.ring.hover {
+  width: 40px;
+  height: 40px;
+  border-color: rgba(201, 169, 110, 0.45);
+}
+
+@media (hover: none) {
+  .ring,
+  .dot {
+    display: none;
+  }
+}

@@ -1,0 +1,118 @@
+.footer {
+  border-top: 1px solid var(--border-faint);
+  background: var(--ink);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem var(--page-gutter) 3.5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bone);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.wordmark span {
+  color: var(--gold);
+}
+
+.tagline {
+  font-size: 0.62rem;
+  letter-spacing: 0.07em;
+  color: rgba(245, 240, 232, 0.3);
+  line-height: 1.85;
+  max-width: 280px;
+  margin-bottom: 2rem;
+}
+
+.domain {
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.18);
+}
+
+.colTitle {
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.colLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.colLink {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: rgba(245, 240, 232, 0.32);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.colLink:hover {
+  color: var(--gold);
+}
+
+.bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem var(--page-gutter) 2.5rem;
+  border-top: 1px solid var(--border-faint);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bottom p {
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  color: rgba(245, 240, 232, 0.2);
+}
+
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .brand {
+    grid-column: 1;
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
