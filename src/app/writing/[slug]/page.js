@@ -10,8 +10,10 @@ export function generateStaticParams() {
   return getAllSlugs()
 }
 
-export function generateMetadata({ params }) {
-  const essay = getEssayBySlug(params.slug)
+// Next.js 15+: params is a Promise — must be awaited
+export async function generateMetadata({ params }) {
+  const { slug } = await params
+  const essay = getEssayBySlug(slug)
   if (!essay) return {}
   return {
     title: `${essay.title} | INNERGAME`,
@@ -31,7 +33,6 @@ export function generateMetadata({ params }) {
   }
 }
 
-// Minimal markdown renderer: ## headings, **bold**, *italic*, paragraphs
 function renderBody(raw) {
   if (!raw) return []
   const blocks  = []
@@ -47,7 +48,7 @@ function renderBody(raw) {
 
   for (const line of lines) {
     const t = line.trim()
-    if (!t)                { flush(); continue }
+    if (!t)                  { flush(); continue }
     if (t.startsWith('## ')) { flush(); blocks.push({ type: 'h2', text: t.slice(3) }); continue }
     current.push(t)
   }
@@ -61,8 +62,10 @@ function applyInline(text) {
     .replace(/\*(.+?)\*/g,     '<em>$1</em>')
 }
 
-export default function EssayPage({ params }) {
-  const essay = getEssayBySlug(params.slug)
+// Next.js 15+: async component, await params
+export default async function EssayPage({ params }) {
+  const { slug } = await params
+  const essay = getEssayBySlug(slug)
   if (!essay) notFound()
 
   const tierLabel = T5_TIERS[essay.tier]?.label ?? essay.tier
@@ -73,14 +76,10 @@ export default function EssayPage({ params }) {
 
   return (
     <>
-      {/* Gold progress bar — client island, standalone, no wrapper */}
       <ReadingProgress />
-
       <Nav />
-
       <main className={styles.main}>
 
-        {/* ── Hero header ── */}
         <header className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroMeta}>
@@ -97,31 +96,23 @@ export default function EssayPage({ params }) {
               <span>{essay.readTime}</span>
             </div>
           </div>
-
           <div
             className={styles.banner}
             style={{ background: essay.glyphBg }}
             role="img"
             aria-label={`T${essay.tier} essay banner`}
           >
-            <span className={styles.bannerGlyph} aria-hidden="true">
-              {essay.glyph}
-            </span>
+            <span className={styles.bannerGlyph} aria-hidden="true">{essay.glyph}</span>
           </div>
         </header>
 
         <hr className="hr-gold" />
 
-        {/* ── Article body ── */}
         <article className={styles.article}>
           <div className={styles.articleInner}>
             {blocks.map((block, i) => {
               if (block.type === 'h2') {
-                return (
-                  <h2 key={i} className={styles.h2}>
-                    {block.text}
-                  </h2>
-                )
+                return <h2 key={i} className={styles.h2}>{block.text}</h2>
               }
               return (
                 <p
@@ -136,7 +127,6 @@ export default function EssayPage({ params }) {
 
         <hr className="hr-gold" />
 
-        {/* ── End CTA ── */}
         <section className={styles.cta}>
           <div className={styles.ctaInner}>
             <p className={styles.ctaLabel}>Continue the work</p>
@@ -152,7 +142,6 @@ export default function EssayPage({ params }) {
         </section>
 
       </main>
-
       <Footer />
     </>
   )
