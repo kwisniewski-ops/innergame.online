@@ -20,9 +20,9 @@
 
 .logo {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--bone);
   text-decoration: none;
@@ -34,13 +34,13 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2.5rem;
   list-style: none;
 }
 
 .link {
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--warm-gray);
   text-decoration: none;
@@ -65,8 +65,8 @@
   border: 1px solid rgba(201,169,110,0.2);
   padding: 0.65rem 1.4rem;
   transition: background 0.3s, border-color 0.3s !important;
-  letter-spacing: 0.25em;
-  font-size: 0.56rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
 }
 
 .cta::after { display: none !important; }
@@ -111,10 +111,7 @@
   transition: opacity 0.3s;
 }
 
-.drawerOpen {
-  opacity: 1;
-  pointer-events: all;
-}
+.drawerOpen { opacity: 1; pointer-events: all; }
 
 .drawerLinks {
   list-style: none;
@@ -125,7 +122,7 @@
 }
 
 .drawerLink {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: var(--font-display);
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -138,8 +135,8 @@
 
 .drawerCta {
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold) !important;
   border: 1px solid rgba(201,169,110,0.3);

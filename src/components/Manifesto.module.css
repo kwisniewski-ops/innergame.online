@@ -40,7 +40,7 @@
 
 .leadText {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
   font-weight: 300;
   line-height: 1.6;
   color: var(--bone);
@@ -48,10 +48,10 @@
 }
 
 .bodyText {
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
   color: var(--warm-gray);
-  line-height: 2;
+  line-height: 1.9;
 }
 
 .pillarsWrap {
@@ -99,17 +99,17 @@
 
 .pillarTitle {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--bone);
   margin-bottom: 1rem;
 }
 
 .pillarBody {
-  font-size: 0.64rem;
-  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
   color: var(--warm-gray);
-  line-height: 1.95;
+  line-height: 1.85;
 }
 
 @media (max-width: 1024px) {

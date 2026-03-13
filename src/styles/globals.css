@@ -33,12 +33,6 @@
 
   --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out:  cubic-bezier(0.76, 0, 0.24, 1);
-
-  --text-label: 0.5rem;
-  --text-sm:    0.62rem;
-  --text-base:  0.72rem;
-  --text-md:    1rem;
-  --text-lg:    1.2rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,6 +43,7 @@ body {
   color: var(--bone);
   font-family: var(--font-body);
   font-weight: 300;
+  font-size: 1rem;
   line-height: 1.8;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -71,12 +66,12 @@ img { display: block; max-width: 100%; }
 button { cursor: none; border: none; background: none; font-family: inherit; }
 
 .section-label {
-  font-size: 0.5rem;
-  letter-spacing: 0.38em;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
   display: block;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .section-title {
@@ -92,11 +87,11 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 .section-title em { font-style: italic; color: var(--gold); }
 
 .section-body {
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
   color: var(--warm-gray);
-  line-height: 2;
-  max-width: 500px;
+  line-height: 1.9;
+  max-width: 560px;
 }
 
 .section-inner {
@@ -119,8 +114,8 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 }
 
 .btn-primary {
-  font-size: 0.58rem;
-  letter-spacing: 0.25em;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--midnight);
   background: var(--gold);
@@ -132,14 +127,11 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   min-height: 48px;
 }
 
-.btn-primary:hover {
-  background: var(--bone);
-  transform: translateY(-1px);
-}
+.btn-primary:hover { background: var(--bone); transform: translateY(-1px); }
 
 .btn-ghost {
-  font-size: 0.58rem;
-  letter-spacing: 0.25em;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--bone);
   border: 1px solid var(--border-mid);
@@ -150,11 +142,7 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   min-height: 48px;
 }
 
-.btn-ghost:hover {
-  border-color: var(--gold);
-  background: var(--gold-glow);
-  transform: translateY(-1px);
-}
+.btn-ghost:hover { border-color: var(--gold); background: var(--gold-glow); transform: translateY(-1px); }
 
 .reveal {
   opacity: 0;
@@ -162,11 +150,7 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+.reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
@@ -185,7 +169,6 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 ::-webkit-scrollbar-track { background: var(--midnight); }
 ::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.3); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
-
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 ::selection { background: rgba(201,169,110,0.25); color: var(--bone); }
 
@@ -195,7 +178,6 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 
 @media (max-width: 600px) {
   :root { --section-pad: 4rem; --page-gutter: 1.5rem; }
-  body { font-size: 1rem; }
   * { cursor: auto; }
   button { cursor: pointer; }
 }

@@ -41,8 +41,8 @@
   left: 1.5rem;
   right: 1.5rem;
   z-index: 2;
-  font-size: 0.52rem;
-  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(138,132,120,0.6);
 }
@@ -63,7 +63,7 @@
 
 .statNum {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 300;
   color: var(--gold);
   line-height: 1;
@@ -71,8 +71,8 @@
 }
 
 .statLabel {
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--warm-gray);
   line-height: 1.6;
@@ -92,7 +92,7 @@
 
 .lead {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
   font-weight: 300;
   color: var(--bone);
   line-height: 1.65;
@@ -101,10 +101,10 @@
 }
 
 .body {
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
   color: var(--warm-gray);
-  line-height: 2;
+  line-height: 1.9;
   margin-bottom: 1.5rem;
 }
 
@@ -117,10 +117,10 @@
 
 .pull p {
   font-family: var(--font-accent);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-style: italic;
   color: rgba(201,169,110,0.75);
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
 }
 

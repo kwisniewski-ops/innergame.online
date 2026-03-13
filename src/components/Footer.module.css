@@ -25,54 +25,51 @@
 
 .brand .logo {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--bone);
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   text-decoration: none;
 }
 
 .brand .logo span { color: var(--gold); }
 
 .brand p {
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
   color: var(--warm-gray);
-  line-height: 1.9;
-  max-width: 240px;
+  line-height: 1.85;
+  max-width: 260px;
   margin-bottom: 2rem;
 }
 
 .tagline {
   font-family: var(--font-accent);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-style: italic;
   color: rgba(201,169,110,0.45);
 }
 
 .colTitle {
-  font-size: 0.5rem;
-  letter-spacing: 0.3em;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1.5rem;
   font-weight: 400;
+  display: block;
 }
 
-.colLinks {
-  list-style: none;
-}
+.colLinks { list-style: none; }
 
-.colLinks li {
-  margin-bottom: 0.7rem;
-}
+.colLinks li { margin-bottom: 0.8rem; }
 
 .colLink {
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
   color: var(--warm-gray);
   text-decoration: none;
   transition: color 0.3s;
@@ -93,8 +90,8 @@
 }
 
 .bottom p {
-  font-size: 0.5rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(138,132,120,0.4);
 }

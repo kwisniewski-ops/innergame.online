@@ -14,9 +14,7 @@
   align-items: center;
 }
 
-.quoteWrap {
-  position: relative;
-}
+.quoteWrap { position: relative; }
 
 .quoteWrap::before {
   content: '"';
@@ -44,8 +42,8 @@
 .cite {
   display: block;
   margin-top: 2rem;
-  font-size: 0.52rem;
-  letter-spacing: 0.28em;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(138,132,120,0.5);
   font-style: normal;
@@ -63,10 +61,10 @@
 .heading em { color: var(--gold); font-style: italic; }
 
 .body {
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
   color: var(--warm-gray);
-  line-height: 2;
+  line-height: 1.9;
   margin-bottom: 1.2rem;
 }
 
@@ -78,12 +76,12 @@
 }
 
 .tag {
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--warm-gray);
   border: 1px solid var(--border-dark);
-  padding: 0.4rem 1rem;
+  padding: 0.45rem 1rem;
   transition: border-color 0.3s, color 0.3s;
 }
 
