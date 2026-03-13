@@ -4,104 +4,86 @@ import Image from 'next/image'
 import { useReveal } from '@/hooks/useReveal'
 import styles from './About.module.css'
 
-const CREDENTIALS = [
-  'Sports Performance Coach',
-  'Stoic & Adlerian Philosophy',
-  'Author — INNERGAME',
-  'T5 Method Creator',
-]
-
 export default function About() {
   const ref = useReveal()
 
   return (
-    <section className={styles.section} id="about" ref={ref}>
+    <div className={styles.architect} id="about" ref={ref}>
       <div className={styles.inner}>
 
-        {/* ── Visual column ── */}
-        <div className={`${styles.visual} reveal`}>
-
-          {/* Decorative corner mark */}
-          <div className={styles.cornerTL} aria-hidden="true" />
-          <div className={styles.cornerBR} aria-hidden="true" />
-
-          {/* The photo */}
-          <div className={styles.imgWrapper}>
-            <Image
-              src="/kyle.jpg"
-              alt="Kyle Wisniewski — Sports Performance Coach and Author"
-              fill
-              sizes="(max-width: 960px) 90vw, 45vw"
-              style={{ objectFit: 'cover', objectPosition: 'center top' }}
-              priority
-              className={styles.img}
-            />
-            {/* Dark gradient overlay — lets caption read cleanly */}
-            <div className={styles.imgOverlay} aria-hidden="true" />
-          </div>
-
-          {/* Caption bar */}
-          <div className={styles.caption}>
-            <div>
-              <p className={styles.captionName}>Kyle Wisniewski</p>
-              <p className={styles.captionRole}>Sports Performance Coach &amp; Author</p>
+        {/* Left — Photo + Stats */}
+        <div className="reveal">
+          <div className={styles.imageWrap}>
+            <div className={styles.photo}>
+              <Image
+                src="/kyle.jpg"
+                alt="Kyle Wisniewski — Founder, INNERGAME Studio"
+                fill
+                sizes="(max-width: 960px) 90vw, 45vw"
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                priority
+                className={styles.img}
+              />
+              <div className={styles.photoOverlay} aria-hidden="true" />
             </div>
-            <div className={styles.captionRule} aria-hidden="true" />
+            <span className={styles.caption}>
+              Kyle Wisniewski · Founder · INNERGAME Studio
+            </span>
           </div>
-
-          {/* Credential tags below photo */}
-          <div className={styles.tags}>
-            {CREDENTIALS.map((c) => (
-              <span key={c} className={styles.tag}>{c}</span>
-            ))}
+          <div className={styles.stats}>
+            <div className={styles.statBlock}>
+              <div className={styles.statNum}>T5</div>
+              <div className={styles.statLabel}>Framework<br />Timescales</div>
+            </div>
+            <div className={styles.statBlock}>
+              <div className={styles.statNum}>4</div>
+              <div className={styles.statLabel}>Atelier Clients<br />Maximum</div>
+            </div>
+            <div className={styles.statBlock}>
+              <div className={styles.statNum}>52</div>
+              <div className={styles.statLabel}>Essays<br />Per Year</div>
+            </div>
           </div>
         </div>
 
-        {/* ── Copy column ── */}
+        {/* Right — Copy */}
         <div className="reveal reveal-delay-2">
-          <span className="section-label">Who Is Kyle</span>
-
-          <h2 className="section-title">
-            I translate embodied<br />
-            performance into<br />
-            <em>written insight.</em>
+          <span className="section-label">The Architect</span>
+          <h2 className={styles.heading}>
+            Performance is the<br />territory. Character is<br /><em>the compass.</em>
           </h2>
 
-          <p className="section-body" style={{ marginBottom: '1.5rem' }}>
-            That's a careful sentence. I didn't say I write <em>about</em> sports,
-            or <em>about</em> philosophy. I say I translate — because the insight
-            I'm after lives in the body first. It's forged in competition, in the
-            weight room, in the moment you choose to continue when everything says stop.
+          <p className={styles.lead}>
+            Kyle Wisniewski is the founder of INNERGAME and the creator of the T5 Timescale
+            Framework — a proprietary system for mapping performance psychology across five
+            temporal scales, from the present moment to the legacy question.
           </p>
 
-          <p className="section-body" style={{ marginBottom: '1.5rem' }}>
-            Stoic philosophy teaches us to separate what is within our control
-            from what is not. Adlerian psychology reminds us that we are always
-            moving <em>toward</em> something — that behavior is purposive. Together,
-            they produce athletes who perform with clarity and people who know what
-            they're competing <em>for.</em>
+          <p className={styles.body}>
+            He writes. He coaches. He competes. The credential is not a certificate hanging
+            on a wall — it is the body, the journal, and the accumulated consequence of
+            taking both the inner and outer game seriously for years before anyone was watching.
           </p>
 
-          <p className="section-body" style={{ marginBottom: '3.5rem' }}>
-            The Inner Game isn't a metaphor. It's a map — to who you actually are,
-            and who you are choosing to become.
-          </p>
-
-          {/* Pull stat */}
-          <div className={styles.stat}>
-            <span className={styles.statNum}>T5</span>
-            <div className={styles.statDivide} aria-hidden="true" />
-            <p className={styles.statText}>
-              Five timescales. One framework. Every athlete, every season.
+          <div className={styles.pull}>
+            <p>
+              "The inner game is not a metaphor — it is a map. A map to who you actually are,
+              and who you are choosing to become. Performance is the territory. Character is the compass."
             </p>
           </div>
 
-          <div style={{ marginTop: '3rem' }}>
-            <a href="#work" className="btn-ghost">Work With Me →</a>
-          </div>
+          <p className={styles.body}>
+            INNERGAME is the institution Kyle built because no institution like it existed.
+            Where Stoicism meets the weight room. Where Adlerian purpose meets competitive drive.
+            Where philosophy is not borrowed wisdom but a living practice under pressure.
+          </p>
+
+          <a href="#letter" className="btn-ghost" style={{ marginTop: '2rem', display: 'inline-flex' }}>
+            Read Kyle's Essays
+          </a>
         </div>
 
       </div>
-    </section>
+    </div>
   )
 }

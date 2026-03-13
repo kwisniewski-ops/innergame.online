@@ -1,107 +1,94 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useReveal } from '@/hooks/useReveal'
 import styles from './Offerings.module.css'
-
-const OFFERS = [
-  {
-    roman:    'I',
-    name:     'The Inner\nLetter',
-    price:    'Free — Weekly',
-    desc:     'Every week, Kyle translates embodied sports performance into philosophical insight — clarifying how you think, how you act, and how to play the game that actually matters.',
-    features: [
-      'Weekly essays on performance & philosophy',
-      'T5 frameworks applied to real life',
-      'Early access to new writing & research',
-      'Invitations to exclusive events & challenges',
-    ],
-    cta:      'Subscribe Free',
-    ctaHref:  '#newsletter',
-    variant:  'ghost',
-    featured: false,
-    external: false,
-  },
-  {
-    roman:    'II',
-    name:     'The\nArchive',
-    price:    '$29 / month',
-    desc:     'Full access to the INNERGAME essay library. Every piece of writing, organized by T5 timescale, with a reading tracker and monthly deep-dive essays exclusive to members.',
-    features: [
-      'Complete T5 essay archive — all tiers',
-      'Monthly members-only deep-dive essay',
-      'Reading progress tracker',
-      'Searchable by topic, timescale, and theme',
-      'Cancel anytime',
-    ],
-    cta:      'Join the Archive',
-    ctaHref:  '/contact',
-    variant:  'gold',
-    featured: true,
-    external: false,
-  },
-  {
-    roman:    'III',
-    name:     'The\nAtelier',
-    price:    '$750 / month — 4 Spots',
-    desc:     'The full INNERGAME experience. Kyle works directly with you to clarify your values, redesign your performance environment, and develop the character that makes every result inevitable.',
-    features: [
-      '4 private 60-min sessions / month',
-      'Bespoke T5 training plan',
-      'Direct messaging access',
-      'Personalized writing exercises & reflection',
-      '3-month minimum commitment',
-    ],
-    cta:      'Apply for a Spot',
-    ctaHref:  '/contact',
-    variant:  'ghost',
-    featured: false,
-    external: false,
-  },
-]
 
 export default function Offerings() {
   const ref = useReveal()
 
   return (
-    <section className={styles.section} id="work" ref={ref}>
-      <div className={styles.headerWrap}>
-        <div className="reveal" style={{ textAlign: 'center' }}>
-          <span className="section-label">Work With Me</span>
-          <h2 className="section-title">
-            Three Ways to Play<br />
-            at the <em>Highest Level</em>
+    <div id="studio" ref={ref}>
+      <div className={styles.header}>
+        <div className="reveal">
+          <span className="section-label">The Studio</span>
+          <h2 className={styles.heading}>
+            One studio.<br />Four distinct<br /><em>experiences.</em>
           </h2>
         </div>
+        <p className={`${styles.headerBody} reveal reveal-delay-1`}>
+          Each offering is a named, branded experience — not a product tier. Names carry
+          weight. Weight commands price. Price signals value. Every entry point is designed
+          to meet you where you are and move you toward where you can be.
+        </p>
       </div>
 
-      <div className={styles.grid}>
-        {OFFERS.map((offer, i) => (
-          <div
-            key={offer.roman}
-            className={`${styles.card} ${offer.featured ? styles.featured : ''} reveal reveal-delay-${i}`}
-          >
-            {offer.featured && (
-              <span className={styles.featuredBadge}>Most Popular</span>
-            )}
-            <div className={styles.roman}>{offer.roman}</div>
-            <h3 className={styles.name}>{offer.name}</h3>
-            <p className={styles.price}>{offer.price}</p>
-            <p className={styles.desc}>{offer.desc}</p>
-            <ul className={styles.features}>
-              {offer.features.map((f) => (
-                <li key={f}>{f}</li>
-              ))}
-            </ul>
-            <a
-              href={offer.ctaHref}
-              className={`${styles.cta} ${offer.variant === 'gold' ? styles.ctaGold : styles.ctaGhost}`}
-            >
-              {offer.cta}
-            </a>
+      <div className={`${styles.grid} reveal`}>
+
+        {/* Featured — The Atelier */}
+        <div className={`${styles.card} ${styles.featured}`}>
+          <div>
+            <span className={styles.scarcity}>4 Clients · Maximum · Currently Accepting</span>
+            <span className={styles.tag}>The Premium Experience · $750 / Month</span>
+            <div className={styles.name}>The Atelier</div>
+            <p className={styles.featuredDesc}>
+              Direct 1:1 work with Kyle. A bespoke T5 architecture built for your exact
+              performance context. This is not coaching — it is a private performance studio.
+            </p>
           </div>
-        ))}
+          <div>
+            <ul className={styles.features}>
+              <li>Bespoke T5 Timescale plan built from first principles</li>
+              <li>Weekly private sessions — structured for your goals</li>
+              <li>Direct access between sessions for real-time decisions</li>
+              <li>Full Archive access included</li>
+              <li>3-month minimum commitment · Maximum 4 clients globally</li>
+            </ul>
+            <a href="/contact" className={styles.ctaFeatured}>Request Admission</a>
+            <p className={styles.note}>
+              Admission via application. Scarcity is not a tactic — it is a requirement of the work.
+            </p>
+          </div>
+        </div>
+
+        {/* The Architecture */}
+        <div className={styles.card}>
+          <span className={styles.tag}>Foundation · $147 / Month</span>
+          <div className={styles.name}>The Architecture</div>
+          <p className={styles.price}>12-Week Self-Paced Program</p>
+          <p className={styles.desc}>
+            The structured deep-dive into your performance psychology, built on the T5 framework.
+            Not a course — an architecture. You will emerge with a complete personal philosophy of
+            performance that functions under pressure, in competition, and across a career.
+          </p>
+          <ul className={styles.features} style={{ marginTop: '1.5rem' }}>
+            <li>12 weeks of T5-mapped exercises and frameworks</li>
+            <li>Full Archive access across all timescales</li>
+            <li>Community cohort — seasonal intake, limited seats</li>
+            <li>Written reflections reviewed by Kyle</li>
+          </ul>
+          <a href="/contact" className={styles.cta}>Begin the Architecture</a>
+        </div>
+
+        {/* The Archive */}
+        <div className={styles.card} id="archive">
+          <span className={styles.tag}>Intellectual Library · $29 / Month</span>
+          <div className={styles.name}>The Archive</div>
+          <p className={styles.price}>Complete Essay Library</p>
+          <p className={styles.desc}>
+            The complete library of INNERGAME essays, organized by T5 timescale. Every argument
+            developed. Every insight archived. The intellectual record of the studio — searchable,
+            filterable, and growing weekly. Essays that age like wine.
+          </p>
+          <ul className={styles.features} style={{ marginTop: '1.5rem' }}>
+            <li>Full access to every published essay</li>
+            <li>Organized by T5 timescale — find exactly what you need</li>
+            <li>New essays added weekly from The Sovereign Letter</li>
+            <li>Search by concept, philosopher, or performance context</li>
+          </ul>
+          <a href="/writing" className={styles.cta}>Access the Archive</a>
+        </div>
+
       </div>
-    </section>
+    </div>
   )
 }
