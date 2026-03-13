@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import EssayClient from '@/components/EssayClient'
+import ReadingProgress from '@/components/ReadingProgress'
 import { getEssayBySlug, getAllSlugs, T5_TIERS } from '@/lib/essays'
 import styles from './essay.module.css'
 
@@ -14,7 +14,7 @@ export function generateMetadata({ params }) {
   const essay = getEssayBySlug(params.slug)
   if (!essay) return {}
   return {
-    title: essay.title,
+    title: `${essay.title} | INNERGAME`,
     description: essay.excerpt,
     openGraph: {
       title: `${essay.title} | INNERGAME`,
@@ -23,16 +23,20 @@ export function generateMetadata({ params }) {
       publishedTime: essay.publishedAt,
       authors: ['Kyle Wisniewski'],
     },
-    twitter: { card: 'summary_large_image', title: essay.title, description: essay.excerpt },
+    twitter: {
+      card: 'summary_large_image',
+      title: essay.title,
+      description: essay.excerpt,
+    },
   }
 }
 
-// Minimal markdown-to-HTML: handles ## headings, **bold**, *italic*, and paragraphs
+// Minimal markdown renderer: ## headings, **bold**, *italic*, paragraphs
 function renderBody(raw) {
   if (!raw) return []
-  const blocks = []
-  const lines = raw.trim().split('\n')
-  let current = []
+  const blocks  = []
+  const lines   = raw.trim().split('\n')
+  let   current = []
 
   const flush = () => {
     if (current.length) {
@@ -41,25 +45,20 @@ function renderBody(raw) {
     }
   }
 
-  lines.forEach((line) => {
-    const trimmed = line.trim()
-    if (!trimmed) { flush(); return }
-    if (trimmed.startsWith('## ')) {
-      flush()
-      blocks.push({ type: 'h2', text: trimmed.slice(3) })
-    } else {
-      current.push(trimmed)
-    }
-  })
+  for (const line of lines) {
+    const t = line.trim()
+    if (!t)                { flush(); continue }
+    if (t.startsWith('## ')) { flush(); blocks.push({ type: 'h2', text: t.slice(3) }); continue }
+    current.push(t)
+  }
   flush()
   return blocks
 }
 
-function inline(text) {
-  // Replace **bold** and *italic* with spans
+function applyInline(text) {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/\*(.+?)\*/g,     '<em>$1</em>')
 }
 
 export default function EssayPage({ params }) {
@@ -74,9 +73,14 @@ export default function EssayPage({ params }) {
 
   return (
     <>
+      {/* Gold progress bar — client island, standalone, no wrapper */}
+      <ReadingProgress />
+
       <Nav />
+
       <main className={styles.main}>
-        {/* Header — server rendered, outside tracking ref */}
+
+        {/* ── Hero header ── */}
         <header className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroMeta}>
@@ -98,52 +102,57 @@ export default function EssayPage({ params }) {
             className={styles.banner}
             style={{ background: essay.glyphBg }}
             role="img"
-            aria-label={`Banner for "${essay.title}"`}
+            aria-label={`T${essay.tier} essay banner`}
           >
-            <span className={styles.bannerGlyph} aria-hidden="true">{essay.glyph}</span>
+            <span className={styles.bannerGlyph} aria-hidden="true">
+              {essay.glyph}
+            </span>
           </div>
         </header>
 
         <hr className="hr-gold" />
 
-        {/* EssayClient: adds gold progress bar + tracks reading depth */}
-        <EssayClient>
-          {/* Body */}
-          <article className={styles.article}>
-            <div className={styles.articleInner}>
-              {blocks.map((block, i) => {
-                if (block.type === 'h2') {
-                  return <h2 key={i} className={styles.h2}>{block.text}</h2>
-                }
+        {/* ── Article body ── */}
+        <article className={styles.article}>
+          <div className={styles.articleInner}>
+            {blocks.map((block, i) => {
+              if (block.type === 'h2') {
                 return (
-                  <p
-                    key={i}
-                    className={i === 0 ? styles.drop : undefined}
-                    dangerouslySetInnerHTML={{ __html: inline(block.text) }}
-                  />
+                  <h2 key={i} className={styles.h2}>
+                    {block.text}
+                  </h2>
                 )
-              })}
-            </div>
-          </article>
+              }
+              return (
+                <p
+                  key={i}
+                  className={i === 0 ? styles.drop : undefined}
+                  dangerouslySetInnerHTML={{ __html: applyInline(block.text) }}
+                />
+              )
+            })}
+          </div>
+        </article>
 
-          <hr className="hr-gold" />
+        <hr className="hr-gold" />
 
-          {/* CTA */}
-          <section className={styles.cta}>
-            <div className={styles.ctaInner}>
-              <p className={styles.ctaLabel}>Continue the work</p>
-              <h2 className={styles.ctaTitle}>
-                Ready to architect your<br />
-                <em>performance from the inside?</em>
-              </h2>
-              <div className={styles.ctaActions}>
-                <a href="/contact" className="btn-primary">Work With Kyle</a>
-                <Link href="/writing" className="btn-ghost">More Essays →</Link>
-              </div>
+        {/* ── End CTA ── */}
+        <section className={styles.cta}>
+          <div className={styles.ctaInner}>
+            <p className={styles.ctaLabel}>Continue the work</p>
+            <h2 className={styles.ctaTitle}>
+              Ready to architect your<br />
+              <em>performance from the inside?</em>
+            </h2>
+            <div className={styles.ctaActions}>
+              <a href="/contact" className="btn-primary">Work With Kyle</a>
+              <Link href="/writing" className="btn-ghost">More Essays →</Link>
             </div>
-          </section>
-        </EssayClient>
+          </div>
+        </section>
+
       </main>
+
       <Footer />
     </>
   )
