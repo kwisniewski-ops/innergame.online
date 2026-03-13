@@ -1,10 +1,11 @@
-/* ─── Writing Section ─────────────────────── */
+/* ─── Writing Section ────────────────────────────────────────── */
+
 .section {
   padding: var(--section-pad) 0;
   border-top: 1px solid var(--border-faint);
 }
 
-/* Header row — title left, "All Essays" right */
+/* ── Header row — title left, "All Essays" right ── */
 .header {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -14,9 +15,24 @@
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
+/* Override section-title bottom margin inside the header */
+.heading {
+  margin-bottom: 1.2rem;
+}
+
+/* Subheading beneath the section title */
+.headingSub {
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 540px;
+  font-weight: 300;
+}
+
+/* "All Essays →" link */
 .allLink {
   font-size: 0.82rem;
   letter-spacing: 0.2em;
@@ -31,9 +47,55 @@
   transition: all 0.3s;
   flex-shrink: 0;
 }
-.allLink:hover { border-color: var(--gold); color: var(--gold); }
 
-/* Essay grid */
+.allLink:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── T5 Filter Strip ── */
+.tierStrip {
+  max-width: var(--max-width);
+  margin: 0 auto 3.5rem;
+  padding: 0 var(--page-gutter);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.tierLabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(138, 132, 120, 0.5);
+  flex-shrink: 0;
+}
+
+.tierPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tierPill {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border-faint);
+  padding: 0.35rem 0.9rem;
+  cursor: default;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.tierPill:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── Essay grid ── */
 .grid {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -43,7 +105,7 @@
   gap: 2px;
 }
 
-/* Card — full block link */
+/* ── Card — full block link ── */
 .card {
   background: rgba(245, 240, 232, 0.018);
   border: 1px solid var(--border-faint);
@@ -58,7 +120,9 @@
 .card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
   background: var(--gold);
   transform: scaleX(0);
@@ -66,10 +130,17 @@
   transition: transform 0.4s;
   z-index: 1;
 }
-.card:hover::before { transform: scaleX(1); }
-.card:hover { border-color: var(--border); background: rgba(245,240,232,0.028); }
 
-/* Image / glyph banner */
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:hover {
+  border-color: var(--border);
+  background: rgba(245, 240, 232, 0.028);
+}
+
+/* ── Glyph banner ── */
 .img {
   height: 160px;
   display: flex;
@@ -83,12 +154,12 @@
   font-family: var(--font-serif);
   font-size: 7rem;
   font-weight: 300;
-  color: rgba(201,169,110,0.12);
+  color: rgba(201, 169, 110, 0.12);
   line-height: 1;
   user-select: none;
 }
 
-/* Card text area */
+/* ── Card text area ── */
 .body {
   padding: 2.2rem 2.2rem 2rem;
   display: flex;
@@ -122,10 +193,26 @@
   color: var(--muted);
   line-height: 1.85;
   flex-grow: 1;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
 }
 
-/* Read link */
+/* ── Read meta row ── */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: 1rem;
+}
+
+.readTime {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(138, 132, 120, 0.5);
+}
+
+/* Read essay link */
 .read {
   font-size: 0.8rem;
   letter-spacing: 0.15em;
@@ -134,15 +221,22 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: auto;
   transition: gap 0.3s;
 }
-.card:hover .read { gap: 0.8rem; }
 
-.arrow { transition: transform 0.3s; }
-.card:hover .arrow { transform: translateX(3px); }
+.card:hover .read {
+  gap: 0.8rem;
+}
 
-/* Footer note below grid */
+.arrow {
+  transition: transform 0.3s;
+}
+
+.card:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ── Footer note below grid ── */
 .footer {
   max-width: var(--max-width);
   margin: 4rem auto 0;
@@ -157,18 +251,54 @@
 
 .footer p {
   font-size: 0.92rem;
-  color: rgba(138,132,120,0.5);
+  color: rgba(138, 132, 120, 0.5);
   line-height: 1.75;
-  max-width: 640px;
+  max-width: 540px;
   font-style: italic;
 }
 
+/* CTA buttons row in footer */
+.footerActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ── */
 @media (max-width: 960px) {
-  .grid { grid-template-columns: 1fr 1fr; }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tierStrip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
-  .header { flex-direction: column; align-items: flex-start; }
-  .footer { flex-direction: column; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .footerActions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .footerActions a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
