@@ -18,26 +18,34 @@
   border-color: rgba(245,240,232,0.07);
 }
 
+/* Brief 03 — scrolled state: graceful compression of larger wordmark */
+.scrolled .logo {
+  font-size: 1.25rem;
+}
+
+/* ── Logo + Descriptor ── */
 .logoWrap {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px; /* Brief 03 — was 4px, more breathing room under taller wordmark */
   text-decoration: none;
 }
 
+/* Brief 03 — wordmark: larger, lighter, wider tracking */
 .logo {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 0.35em;
+  font-size: 1.55rem;       /* was 1.1rem */
+  font-weight: 300;         /* was 500 — luxury move */
+  letter-spacing: 0.45em;   /* was 0.35em */
   text-transform: uppercase;
   color: var(--bone);
-  transition: color 0.3s;
+  transition: font-size 0.4s;
   display: block;
 }
 
 .logo span { color: var(--gold); }
 
+/* Brief 02 — descriptor: whisper beneath the wordmark */
 .descriptor {
   font-family: var(--font-body);
   font-size: 0.52rem;
@@ -48,6 +56,7 @@
   display: block;
 }
 
+/* ── Nav links ── */
 .links {
   display: flex;
   align-items: center;
@@ -59,8 +68,9 @@
   font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--warm-gray);
+  color: rgba(245,240,232,0.7);
   text-decoration: none;
+  font-weight: 300;
   transition: color 0.3s;
   position: relative;
 }
@@ -77,15 +87,18 @@
 .link:hover { color: var(--bone); }
 .link:hover::after { width: 100%; }
 
+/* Brief 01 + 02 + 03 — CTA: solid gold, bold, pulse, separated */
 .cta {
   background: var(--gold);
   color: var(--ink) !important;
   border: 1px solid var(--gold);
   padding: 0.65rem 1.75rem;
   font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  margin-left: 3rem;
+  font-weight: 600;              /* Brief 02 */
+  letter-spacing: 0.22em;       /* Brief 02 — slightly tighter for bold weight */
+  margin-left: 3rem;            /* Brief 03 — spatial separation from nav cluster */
   transition: background 0.25s ease !important;
+  animation: ctaPulse 2.8s ease-out infinite; /* Brief 02 */
 }
 
 .cta::after { display: none !important; }
@@ -94,8 +107,17 @@
   background: var(--gold-dark) !important;
   border-color: var(--gold-dark) !important;
   color: var(--ink) !important;
+  animation-play-state: paused; /* Brief 02 — pause pulse on hover */
 }
 
+/* Brief 02 — ambient pulse using brand gold */
+@keyframes ctaPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.45); }
+  60%  { box-shadow: 0 0 0 7px rgba(201, 169, 110, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0); }
+}
+
+/* ── Mobile burger ── */
 .burger {
   display: none;
   flex-direction: column;
@@ -117,6 +139,7 @@
 .burgerOpen span:nth-child(2) { opacity: 0; }
 .burgerOpen span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
 
+/* ── Mobile drawer ── */
 .drawer {
   display: none;
   position: fixed;
@@ -155,10 +178,12 @@
 .drawerCta {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  letter-spacing: 0.25em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold) !important;
-  border: 1px solid rgba(201,169,110,0.3);
+  color: var(--ink) !important;
+  background: var(--gold);
+  border: 1px solid var(--gold);
   padding: 1rem 2rem;
   display: inline-block;
 }

@@ -7,7 +7,7 @@ import styles from './Nav.module.css'
 
 const NAV_LINKS = [
   { href: '#method',  label: 'The Method' },
-  { href: '/writing', label: 'The Canon' },
+  { href: '/writing', label: 'The Essays' },
   { href: '#studio',  label: 'The Studio' },
   { href: '#about',   label: 'The Founder' },
 ]
@@ -37,7 +37,7 @@ export default function Nav() {
         ))}
         <li>
           <a href="#letter" className={`${styles.link} ${styles.cta}`}>
-            Enter the Letter
+            Begin Here
           </a>
         </li>
       </ul>
@@ -61,7 +61,7 @@ export default function Nav() {
           ))}
           <li>
             <a href="#letter" className={`${styles.drawerLink} ${styles.drawerCta}`} onClick={() => setOpen(false)}>
-              Enter the Letter
+              Begin Here
             </a>
           </li>
         </ul>
