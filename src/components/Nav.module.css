@@ -27,16 +27,16 @@
 .logoWrap {
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Brief 03 — was 4px, more breathing room under taller wordmark */
+  gap: 6px;
   text-decoration: none;
 }
 
 /* Brief 03 — wordmark: larger, lighter, wider tracking */
 .logo {
   font-family: var(--font-display);
-  font-size: 1.55rem;       /* was 1.1rem */
-  font-weight: 300;         /* was 500 — luxury move */
-  letter-spacing: 0.45em;   /* was 0.35em */
+  font-size: 1.55rem;
+  font-weight: 300;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--bone);
   transition: font-size 0.4s;
@@ -48,7 +48,7 @@
 /* Brief 02 — descriptor: whisper beneath the wordmark */
 .descriptor {
   font-family: var(--font-body);
-  font-size: 0.52rem;
+  font-size: 0.68rem;
   font-weight: 200;
   letter-spacing: 0.3em;
   text-transform: uppercase;
