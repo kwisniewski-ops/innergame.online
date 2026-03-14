@@ -23,7 +23,7 @@ export default function Hero() {
         </p>
 
         <div className={styles.actions}>
-          <a href="#letter" className={styles.btnPrimary}>Read the Letter — Free</a>
+          <a href="#letter" className={styles.btnPrimary}>Read the Letter</a>
           <a href="#studio" className={styles.btnGhost}>Explore the Studio</a>
         </div>
       </div>

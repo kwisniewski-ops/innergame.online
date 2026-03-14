@@ -26,7 +26,6 @@ export default function Nav() {
 
       <Link href="/" className={styles.logoWrap}>
         <span className={styles.logo}>INNER<span>GAME</span></span>
-        <span className={styles.descriptor}>Performance Philosophy for the Athlete</span>
       </Link>
 
       <ul className={styles.links}>
