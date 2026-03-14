@@ -17,15 +17,23 @@ export default function Hero() {
         <p className={styles.sub}>Most train the body. Few train the mind that moves it.</p>
 
         <p className={styles.body}>
-          INNERGAME is where serious athletes and ambitious humans come to understand
-          what is actually happening beneath every result, every decision, every season.
-          Not motivation. Architecture.
+          Kyle Wisniewski applies Stoic philosophy and Adlerian psychology to one
+          question: why do some athletes compound under pressure while others fragment?
+          The answer is always architectural. INNERGAME is the framework.
         </p>
 
         <div className={styles.actions}>
           <a href="#letter" className={styles.btnPrimary}>Read the Letter</a>
-          <a href="#studio" className={styles.btnGhost}>Explore the Studio</a>
+          <a href="#studio" className={styles.btnGhost}>The Work</a>
         </div>
+      </div>
+
+      <div className={styles.portrait} aria-hidden="true">
+        <img
+          src="/images/kyle-hero.jpg"
+          alt="Kyle Wisniewski"
+          className={styles.portraitImg}
+        />
       </div>
 
       <div className={styles.scroll} aria-hidden="true">
