@@ -18,6 +18,13 @@
   border-color: rgba(245,240,232,0.07);
 }
 
+.logoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+}
+
 .logo {
   font-family: var(--font-display);
   font-size: 1.1rem;
@@ -25,11 +32,21 @@
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--bone);
-  text-decoration: none;
   transition: color 0.3s;
+  display: block;
 }
 
 .logo span { color: var(--gold); }
+
+.descriptor {
+  font-family: var(--font-body);
+  font-size: 0.52rem;
+  font-weight: 200;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  display: block;
+}
 
 .links {
   display: flex;
@@ -64,9 +81,10 @@
   background: var(--gold);
   color: var(--ink) !important;
   border: 1px solid var(--gold);
-  padding: 0.65rem 1.4rem;
+  padding: 0.65rem 1.75rem;
   font-size: 0.78rem;
   letter-spacing: 0.2em;
+  margin-left: 3rem;
   transition: background 0.25s ease !important;
 }
 

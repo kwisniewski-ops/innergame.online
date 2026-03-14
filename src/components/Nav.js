@@ -7,9 +7,9 @@ import styles from './Nav.module.css'
 
 const NAV_LINKS = [
   { href: '#method',  label: 'The Method' },
-  { href: '/writing', label: 'Archive' },
+  { href: '/writing', label: 'The Canon' },
   { href: '#studio',  label: 'The Studio' },
-  { href: '#about',   label: 'About' },
+  { href: '#about',   label: 'The Founder' },
 ]
 
 export default function Nav() {
@@ -23,8 +23,10 @@ export default function Nav() {
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <Link href="/" className={styles.logo}>
-        INNER<span>GAME</span>
+
+      <Link href="/" className={styles.logoWrap}>
+        <span className={styles.logo}>INNER<span>GAME</span></span>
+        <span className={styles.descriptor}>Performance Philosophy for the Athlete</span>
       </Link>
 
       <ul className={styles.links}>
