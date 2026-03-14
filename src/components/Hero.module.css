@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 4rem 5rem;
+  padding: 0 4rem 6.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -143,57 +143,13 @@
 
 .btnGhost:hover { border-color: var(--gold); background: var(--gold-glow); transform: translateY(-1px); }
 
-.scroll {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease-out) 1.4s forwards;
-  z-index: 2;
-}
-
-.scroll span {
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(138,132,120,0.45);
-  writing-mode: vertical-rl;
-}
-
-.scrollLine {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  animation: scrollPulse 2.5s ease-in-out infinite;
-}
-
-@media (max-width: 768px) {
-  .hero { padding: 0 1.5rem 4rem; }
-  .actions { flex-direction: column; align-items: flex-start; }
-  .scroll { display: none; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50%       { opacity: 0.8; transform: scaleY(1.1); }
-}
-
 /* ── Portrait ── */
 .portrait {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 44%;
-  height: 92%;
+  width: 35%;
+  height: 100%;
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
@@ -204,8 +160,9 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, var(--midnight) 0%, transparent 28%),
-    linear-gradient(to top, var(--midnight) 0%, transparent 18%);
+    linear-gradient(to right, var(--midnight) 0%, transparent 35%),
+    linear-gradient(to top, var(--midnight) 0%, transparent 20%),
+    linear-gradient(to bottom, var(--midnight) 0%, transparent 15%);
   z-index: 2;
   pointer-events: none;
 }
@@ -214,14 +171,25 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 8%;
   display: block;
-  filter: grayscale(100%) contrast(1.08) brightness(0.82);
   opacity: 0;
+  filter: grayscale(100%) contrast(1.1) brightness(0.78);
   animation: portraitFadeIn 1.2s var(--ease-out) 0.9s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes portraitFadeIn {
   from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 0.72; transform: translateY(0); }
+  to   { opacity: 0.68; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 0 1.5rem 5rem; }
+  .actions { flex-direction: column; align-items: flex-start; }
+  .portrait { display: none; }
 }

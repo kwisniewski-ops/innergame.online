@@ -8,7 +8,7 @@ export default function Hero() {
       <div className={styles.bgText} aria-hidden="true">INNER</div>
 
       <div className={styles.content}>
-        <span className={styles.eyebrow}>The Performance Philosophy Studio</span>
+        <span className={styles.eyebrow}>Performance Philosophy for the Athlete</span>
 
         <h1 className={styles.headline}>
           The game is won<br /><em>inside first.</em>
@@ -36,10 +36,6 @@ export default function Hero() {
         />
       </div>
 
-      <div className={styles.scroll} aria-hidden="true">
-        <span>Scroll</span>
-        <div className={styles.scrollLine} />
-      </div>
     </section>
   )
 }

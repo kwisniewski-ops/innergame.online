@@ -8,13 +8,11 @@ import About from '@/components/About'
 import Testimonial from '@/components/Testimonial'
 import Newsletter from '@/components/Newsletter'
 import Footer from '@/components/Footer'
-import SectionProgress from '@/components/SectionProgress'
 
 export default function HomePage() {
   return (
     <>
       <Nav />
-      <SectionProgress />
       <main>
         <Hero />
         <Manifesto />
