@@ -61,20 +61,21 @@
 .link:hover::after { width: 100%; }
 
 .cta {
-  color: var(--gold) !important;
-  border: 1px solid rgba(201,169,110,0.2);
+  background: var(--gold);
+  color: var(--ink) !important;
+  border: 1px solid var(--gold);
   padding: 0.65rem 1.4rem;
-  transition: background 0.3s, border-color 0.3s !important;
   font-size: 0.78rem;
   letter-spacing: 0.2em;
+  transition: background 0.25s ease !important;
 }
 
 .cta::after { display: none !important; }
 
 .cta:hover {
-  background: rgba(201,169,110,0.1);
-  border-color: var(--gold) !important;
-  color: var(--bone) !important;
+  background: var(--gold-dark) !important;
+  border-color: var(--gold-dark) !important;
+  color: var(--ink) !important;
 }
 
 .burger {
